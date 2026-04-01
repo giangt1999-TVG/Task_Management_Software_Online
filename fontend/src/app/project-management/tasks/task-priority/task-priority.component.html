@@ -1,0 +1,5 @@
+<div class="p-mb-3">
+    <div class="p-mb-1 priority-section">Priority</div> 
+    <p-dropdown [options]="priorities" [(ngModel)]="currentPriority" (ngModelChange)=" onChangePriority($event)" optionLabel="name" [style]="{'width':'12rem'}"  [placeholder]="task.priority.name" [autoDisplayFirst]="false"></p-dropdown>
+</div>
+

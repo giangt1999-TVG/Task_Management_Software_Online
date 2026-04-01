@@ -1,0 +1,5 @@
+<div class="p-mb-3">
+    <div class="p-mb-1 assignee-section">Assignee</div>
+    <p-dropdown [options]="assignees" [(ngModel)]="currentAssignee" (ngModelChange)="onChangeUser($event)" optionLabel="fullName" [style]="{'width':'12rem'}" [placeholder]="(task.assignee === null) ? 'Select Member Assignee' : task.assignee.fullName"  [autoDisplayFirst]="false"></p-dropdown>
+</div>
+

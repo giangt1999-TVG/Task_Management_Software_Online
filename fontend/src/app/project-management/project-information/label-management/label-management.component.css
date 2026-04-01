@@ -1,0 +1,59 @@
+.main-container-dialog{
+    width: 450px;
+    height: auto;
+}
+
+.add-member-title{
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    justify-items: baseline;
+    margin-bottom: 0px;
+}
+
+.text-tittle{
+    font-weight: 500;
+}
+
+.label-tittle{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.div-task-function{
+    display: flex;
+    justify-content: space-around;
+    justify-items: baseline;
+}
+
+.main-content{
+    padding: 10px 10px 10px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.div-label-name{
+    margin-bottom: 20px;
+}
+
+.div-label-color{
+    height: 250px;
+    margin-bottom: 20px;
+}
+
+.button-add{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.p-button::ng-deep {
+    background: #3ABCA7 !important;
+    border: 1px solid #3ABCA7 !important;
+  }
+  
+  .p-button:enabled:hover::ng-deep {
+    background: #33a793 !important;
+    color: #ffffff;
+    border-color: #33a793 !important;
+  }

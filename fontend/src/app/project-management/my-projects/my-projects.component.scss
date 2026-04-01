@@ -1,0 +1,88 @@
+:host ::ng-deep {
+    .p-paginator {
+        .p-paginator-current {
+            margin-left: auto;
+        }
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+        background: #d8ffd1;
+        border-color: #d8ffd1;
+    }
+
+    .p-link:focus {
+        box-shadow: 0 0 0 0.2rem #7db873;
+    }
+
+    .p-button-success {
+        background: #3ABCA7;
+        border: 1px solid #3ABCA7;
+    }
+
+    .p-button-success:enabled:hover {
+        background: #33a793;
+        color: #ffffff;
+        border-color: #33a793;
+    }
+
+    .p-datatable.p-datatable-tasks {
+        .p-datatable-header {
+            padding: 1rem;
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        .p-paginator {
+            padding: 1rem;
+        }
+
+        .p-datatable-thead > tr > th {
+            text-align: left;
+        }
+
+        // .p-datatable-tbody > tr > td {
+        //     cursor: auto;
+        // }
+
+        .p-dropdown-label:not(.p-placeholder) {
+            text-transform: uppercase;
+        }
+        // .p-dropdown {
+        //     width: fit-content;
+        // }
+    }
+
+    /* Responsive */
+    .p-datatable-tasks .p-datatable-tbody > tr > td .p-column-title {
+        display: none;
+    }
+}
+
+.main-container {
+    padding: 16px 16px 16px 16px;
+}
+
+.div-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.div-recent-project {
+    margin-top: 20px;
+}
+
+.task-assignee {
+    display: flex;
+}
+
+.image-text {
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-left: 0.5rem;
+}

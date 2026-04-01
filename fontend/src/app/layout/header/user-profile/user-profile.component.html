@@ -1,0 +1,90 @@
+<div class="main-container-dialog">
+    <div mat-dialog-title class="task-detail-title">
+        <h1 class="header-title">User Profile</h1>
+        <div class="div-task-function">
+            <div>
+                <span [mat-dialog-close]="true" (click)="onCloseClick()">
+                    <i class="pi pi-times"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-content class="main-content text-normal">
+        <form [formGroup]="userInformationForm" (ngSubmit)="saveChangesInfo()">
+            <div class="div-upload-image">
+                <div class="PhotoUpload-photoDisplay">
+                    <div class="image-display" *ngIf="userInfo.avatarUrl !== null; else elseBlockNoAvatar">
+                        <!-- <ngx-avatar class="PlaceholderAvatar PlaceholderAvatar--xlarge" [src]="userInfo.avatarUrl"> -->
+                        <img class="PlaceholderAvatar PlaceholderAvatar--xlarge" [src]="userInfo.avatarUrl">
+                        <!-- </ngx-avatar> -->
+                        <!-- </ngx-avatar> -->
+                    </div>
+                    <ng-template #elseBlockNoAvatar>
+                        <ngx-avatar class="PlaceholderAvatar PlaceholderAvatar--xlarge" [src]="userInfo.avatarUrl"
+                            [name]="shortName" size="120" initialsSize="2" [round]="true">
+                        </ngx-avatar>
+                    </ng-template>
+                </div>
+                <div class="PhotoUpload-description">
+                    <div class="PhotoUpload-buttons">
+                        <span class="primary-link-button" role="button" aria-disabled="false" for="file-upload"
+                            onclick="document.getElementById('file-upload').click()">Upload your image
+                            <input class="input-upload-file" id="file-upload" type="file" accept="image/*"
+                                (change)="selectedFile($event)" formControlName="imageUrl" />
+                        </span>
+                    </div>
+                    <div class="PhotoUpload-helpMessage">Photos help your teammates recognize you in TMSO</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <div class="p-field">
+                        <label for="id" class="label-tittle text-title">ID</label>
+                        <br>
+                        <input class="input-disabled" id="id" type="text" pInputText [style]="{'width':'306px'}"
+                            value="{{userInfo.id}}" disabled />
+                    </div>
+                    <br>
+                    <div class="p-field">
+                        <label for="fullname" class="label-tittle text-title">Full Name</label>
+                        <br>
+                        <input id="fullname" type="text" pInputText [style]="{'width':'306px'}"
+                            formControlName="inputfullName" [(ngModel)]="userInfo.fullName"
+                            [ngClass]="{ 'ng-invalid ng-dirty': f.inputfullName.invalid }" />
+                        <div class="p-col-12"><small *ngIf="f.inputfullName.invalid" id="username-help"
+                                class="p-error">Fullname is invalid.</small></div>
+                    </div>
+                    <br>
+                </div>
+                <div class="column">
+                    <div class="p-field">
+                        <label for="email" class="label-tittle text-title">Email</label>
+                        <br>
+                        <input class="input-disabled" id="email" type="text" aria-describedby="email-help" pInputText
+                            [style]="{'width':'306px'}" disabled value="{{userInfo.email}}" />
+                    </div>
+                    <br>
+                    <div class="p-field">
+                        <label for="role" class="label-tittle text-title">Role</label>
+                        <br>
+                        <input class="input-disabled" id="role" type="text" aria-describedby="role-help" pInputText
+                            [style]="{'width':'306px'}" disabled value="{{userInfo.role}}" />
+                    </div>
+                </div>
+            </div>
+            <div class="div-description-text">
+                <label class="label-tittle text-title">Description</label>
+                <div>
+                    <textarea inputId="textarea" rows="5" style="resize: none;" cols="89"
+                        formControlName="inputDescription" pInputTextarea [(ngModel)]="userInfo.description"></textarea>
+                </div>
+            </div>
+            <div class="div-button-save">
+                <!-- <span class="p-buttonset"> -->
+                    <button pButton pRipple class="p-button-rounded" label="Save Changes"
+                        [disabled]="!userInformationForm.dirty" style="width: 250px;"></button>
+                <!-- </span> -->
+            </div>
+        </form>
+    </div>
+</div>

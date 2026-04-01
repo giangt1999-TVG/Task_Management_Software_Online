@@ -1,0 +1,67 @@
+<div class="main-container">
+    <div class="header-mytask">
+        <h1 class="header-title" style="padding-left: 5px;">My Tasks</h1>
+        <span class="p-input-icon-left">
+            <i class="pi pi-search" (click)="searchTaskNameBtn()"></i>
+            <input pInputText type="text" [(ngModel)]="keyWord" (keydown)="searchTaskNameKeyDown($event)"
+                placeholder="Search by Task Name" />
+        </span>
+    </div>
+    <hr>
+    <p-table #dt [value]="tasks" dataKey="id" styleClass="p-datatable-tasks" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowHover]="true"
+        [scrollable]="true" scrollHeight="622px" [filterDelay]="0"
+        [globalFilterFields]="['taskName','project','assignee','dueDate','status']" [loading]="loading">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="taskName" class="taskName">Task Name <p-sortIcon field="taskName"></p-sortIcon>
+                </th>
+                <th pSortableColumn="project" class="project">Project <p-sortIcon field="project"></p-sortIcon>
+                </th>
+                <th pSortableColumn="assignee" class="assignee">Assignee <p-sortIcon field="assignee"></p-sortIcon>
+                </th>
+                <th pSortableColumn="dueDate" class="dueDate">Due date <p-sortIcon field="dueDate"></p-sortIcon>
+                </th>
+                <th pSortableColumn="status" class="status">Status <p-sortIcon field="status"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-task>
+            <tr class="p-selectable-row" style="cursor: pointer;">
+                <td class="taskName" (click)="openTaskModelDialog(task.taskId)">
+                    <i *ngIf="task.category == 'Task'" class="fas fa-check-square task-icon"></i>
+                    <i *ngIf="task.category == 'Subtask'" class="fas fa-share-alt-square task-icon"></i>
+                    <span>{{task.name}}</span>
+                </td>
+                <td class="project" [routerLink]="['/project', task.projectId, 'kanban-view', task.projectId]">
+                    {{task.projectName}}
+                </td>
+                <td class="assignee" (click)="openTaskModelDialog(task.taskId)">
+                    <div *ngIf="task.assignee === null" class="task-assignee">
+                    </div>
+                    <div *ngIf="task.assignee !== null" class="task-assignee">
+                        <ngx-avatar class="image-avatar" [name]="shortName(task.assignee.fullName)"
+                            [src]="task.assignee.avatarUrl" size="30" initialsSize="2" [round]="true"></ngx-avatar>
+                        <span class="image-text">{{task.assignee.fullName}}</span>
+                    </div>
+                </td>
+                <td class="dueDate" (click)="openTaskModelDialog(task.taskId)">
+                    <div *ngIf="task.dueDate === null" class="task-assignee">
+                    </div>
+                    <div *ngIf="task.dueDate !== null" class="task-assignee">
+                        <i class="pi pi-calendar" style="padding-right: 5px;"></i>{{task.dueDate | date}}
+                    </div>
+                </td>
+                <td class="status" (click)="openTaskModelDialog(task.taskId)">
+                    {{task.taskStatus.name}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No Tasks found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

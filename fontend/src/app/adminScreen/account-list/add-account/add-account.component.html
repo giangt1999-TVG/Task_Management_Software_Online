@@ -1,0 +1,79 @@
+<div class="main-container-dialog">
+    <div mat-dialog-title class="edit-accounts-title">
+        <h1 class="header-title">Create Account</h1>
+        <div class="div-task-function">
+            <span [mat-dialog-close]="true">
+                <i class="pi pi-times"></i>
+            </span>
+        </div>
+    </div>
+    <div mat-dialog-content class="main-content">
+        <form [formGroup]="addForm" (ngSubmit)="addAccount()">
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title required required">Role</label></div>
+                        <div class="p-col-6">
+                            <p-dropdown [options]="roles" formControlName="selectedRoleName" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.selectedRoleName.errors }"
+                            optionLabel="name" placeholder="Seclect Role" aria-describedby="rolename-help"></p-dropdown>
+                        </div>
+                        <div class="p-col-12">
+                            <small *ngIf="submitted && f.selectedRoleName.errors && f.selectedRoleName.hasError('required')" id="fullname-help" class="p-error">Role is required</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title">Roll Number</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.rollNumber.errors }" type="text"
+                                aria-describedby="rollNumber-help" formControlName="rollNumber" placeholder="Roll number" pInputText>
+                        </div>
+                        <div class="p-col-12">
+                            <small *ngIf="submitted && f.rollNumber.errors && f.rollNumber.hasError('maxlength')" id="rollNumber-help" class="p-error">Roll Number maxium length is
+                                {{f.rollNumber.errors.maxlength.requiredLength}}</small>
+                            <small *ngIf="submitted && f.rollNumber.errors && f.rollNumber.hasError('pattern')" id="rollNumber-help" class="p-error">Roll Number is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title required">Full Name</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.fullName.errors }" type="text" required
+                                aria-describedby="fullname-help" formControlName="fullName" placeholder="Full name" pInputText>
+                        </div>
+                        <div class="p-col-12">
+                            <small *ngIf="submitted && f.fullName.errors && f.fullName.hasError('required')" id="fullname-help" class="p-error">Full Name is required</small>
+                            <small *ngIf="submitted && f.fullName.errors && f.fullName.hasError('maxlength')" id="fullname-help" class="p-error">Full Name maxium length is
+                                        {{f.fullName.errors.maxlength.requiredLength}}</small>
+                            <small *ngIf="submitted && f.fullName.errors && f.fullName.hasError('pattern')" id="fullname-help" class="p-error">Full Name is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title required">Email</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" type="text"[ngClass]="{ 'ng-invalid ng-dirty': submitted && f.email.errors }" type="text" required
+                            aria-describedby="email-help" formControlName="email" placeholder="Email" pInputText required>
+                        </div>
+                        <div class="p-col-12">
+                            <small *ngIf="submitted && f.email.errors && f.email.hasError('required')" id="email-help" class="p-error">Email is required</small>
+                            <small *ngIf="submitted && f.email.errors && f.email.hasError('maxlength')" id="email-help" class="p-error">Email maxium length is
+                                        {{f.email.errors.maxlength.requiredLength}}</small>
+                            <small *ngIf="submitted && f.email.errors && f.email.hasError('pattern')" id="email-help" class="p-error">Email is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="div-button-update">
+                    <button pButton pRipple type="button" class="p-button-rounded" (click)="addAccount()" label="Create"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

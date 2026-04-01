@@ -1,0 +1,205 @@
+<div class="main-container-dialog">
+    <div mat-dialog-title class="task-detail-title">
+        <h1 class="text-title">Task - {{tasks.name}}</h1>
+        <div class="div-task-function">
+            <mat-dialog-actions>
+                <div class="p-r-20 pc">
+                    <button pButton pRipple label="Delete" icon="pi pi-trash" class="button-title"
+                        [style]="{'height':'32px'}"></button>
+                </div>
+            </mat-dialog-actions>
+            <div>
+                <span [mat-dialog-close]="true">
+                    <i class="pi pi-times"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div mat-dialog-content class="main-content text-normal">
+        <div class="div-checkbox">
+            <span>
+                <p-checkbox value="{{tasks.isActive}}" label="{{tasks.isActive}}" [binary]="true" inputId="binary"
+                    [(ngModel)]="checkedActive"></p-checkbox>
+                Active/Deactive
+            </span>
+            <span>
+                <p-checkbox value="{{tasks.isCompleted}}" label="{{tasks.isCompleted}}" [binary]="true" inputId="binary"
+                    [(ngModel)]="checkedComplete"></p-checkbox>
+                Mark as completed
+            </span>
+            <span>
+                <p-checkbox name="groupname" value="val1ue3"></p-checkbox>
+                Subcribe
+            </span>
+        </div>
+        <div class="row">
+            <div class="column">
+                <p class="display-field-left">Task Name
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText placeholder="TaskName" [style]="{'width':'200px'}"
+                            value="{{tasks.name}}">
+                    </span>
+                </p>
+                <br>
+                <p class="display-field-left">Assigne
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText placeholder="Member" [style]="{'width':'200px'}" value="">
+                    </span>
+                </p>
+                <br>
+                <p class="display-field-left">Start Date
+                    <span>
+                        <p-calendar dataType="date" dateFormat="yy/mm/dd" placeholder="yyyy/mm/dd"
+                            [style]="{'width':'200px'}" [showIcon]="true" [(ngModel)]="startDate"></p-calendar>
+                    </span>
+                </p>
+
+                <br>
+                <p class="display-field-left">Due Date
+                    <span>
+                        <p-calendar dataType="date" dateFormat="yy/mm/dd" placeholder="yyyy/mm/dd"
+                            [style]="{'width':'200px'}" [showIcon]="true" [(ngModel)]="dueDate"></p-calendar>
+                    </span>
+                </p>
+                <br>
+            </div>
+            <div class="column">
+                <p class="display-field-left">Project Name
+                    <span>
+                        <input type="text" pInputText placeholder="Project Name" disabled [style]="{'width':'200px'}">
+                    </span>
+                </p>
+                <br>
+                <p class="display-field-right">Section
+                    <span>
+                        <p-dropdown [options]="section" optionLabel="sectionName" [style]="{'width':'200px'}">
+                        </p-dropdown>
+                    </span>
+                </p>
+                <br>
+                <p class="display-field-right">Priority
+                    <span>
+                        <p-dropdown [options]="priority" optionLabel="priorityName" [style]="{'width':'200px'}">
+                        </p-dropdown>
+                    </span>
+                </p>
+                <br>
+                <p class="display-field-right">Label
+                    <span>
+                        <p-dropdown [options]="tasks.label" optionLabel="tasks.label" [style]="{'width':'200px'}">
+                        </p-dropdown>
+                    </span>
+                </p>
+                <br>
+            </div>
+        </div>
+        <div class="div-description-text">
+            <p>Description</p>
+            <div>
+                <textarea inputId="textarea" rows="5" style="resize: none;" cols="110"
+                    pInputTextarea>{{tasks.description}}</textarea>
+            </div>
+        </div>
+        <div class="div-checklists">
+            <div class="div-ckecklist-title">
+                <p>Check List {{countCheckListPercent()}}</p>
+                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+                    (click)="addCheckListElement()"></button>
+            </div>
+            <div>
+                <div class="div-checklist-content" *ngFor="let checklist of tasks.checklists; let i = index">
+                    <span>
+                        <p-checkbox name="groupname" value="{{checklist.checklistId}}"
+                            label="{{checklist.isCompleted}}"></p-checkbox>
+                    </span>
+                    <span>
+                        <input type="text" pInputText placeholder="Checklist Name" name="value{{i}}"
+                            value="{{checklist.name}}">
+                    </span>
+                    <span class="span-delete-checklist" (click)="deleteCheckListElement(i)">
+                        <button pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded p-button-danger p-button-text"></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="div-subtasks">
+            <div class="div-subtask-title">
+                <p>Sub Task {{countSubTaskPercent()}}</p>
+                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+                    (click)="addSubTaskElement()"></button>
+            </div>
+            <div>
+                <div class="div-subtask-content" *ngFor="let subtask of tasks.subtasks; let j = index">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText placeholder="SubTask Name" [style]="{'width':'190px'}"
+                            name="value{{j}}" value="{{subtask.name}}">
+                    </span>
+                    <span>Status: </span>
+                    <span>Section: </span>
+                    <span class="span-delete-subtask" (click)="deleteSubTaskElement(j)">
+
+                        <button pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded p-button-danger p-button-text"></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="div-dependencies">
+            <div class="div-dependencies-title">
+                <p>Dependencies {{countDependenciesPercent()}}</p>
+                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+                    (click)="addDependenciesElement()"></button>
+            </div>
+            <div>
+                <div class="div-dependencies-content" *ngFor="let dependency of tasks.dependencies; let k = index">
+                    <span class="p-input-icon-left">
+                        <i class="pi pi-search"></i>
+                        <input type="text" pInputText placeholder="Search Task" [style]="{'width':'190px'}"
+                            [(ngModel)]="dependency.dependency" #name="ngModel" name="value{{k}}">
+                    </span>
+                    <span>
+                        <p-dropdown [options]="condition" optionLabel="coditionName" [style]="{'width':'170px'}">
+                        </p-dropdown>
+                    </span>
+                    <span>Status: </span>
+                    <span>Section: </span>
+                    <span class="span-delete-dependency" (click)="deleteDependenciesElement(k)">
+                        <button pButton pRipple type="button" icon="pi pi-times"
+                            class="p-button-rounded p-button-danger p-button-text"></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="div-attchment-text">
+            <p>Attachments</p>
+            <div style="margin-bottom: 20px" class="card">
+                <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" [multiple]="true"
+                    accept="image/*">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+        <div class="div-comment-text">
+            <p>Comment</p>
+            <div>
+                <textarea inputId="textarea" rows="5" style="resize: none;" cols="110" pInputTextarea></textarea>
+            </div>
+            <div class="listComment">
+                <table *ngFor="let comment of tasks.comments">
+                    <tr>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

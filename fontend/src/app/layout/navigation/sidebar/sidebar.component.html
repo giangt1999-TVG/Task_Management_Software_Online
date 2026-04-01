@@ -1,0 +1,25 @@
+<div [style.width.px]="sidebarWidth"
+     class="sidebar">
+    <div class="sidebar-content">
+        <div class="p-d-flex p-jc-center logo p-py-6">
+            <img src="../../../assets/image/logo-website.svg" alt="Logo website" width="80" height="80">
+            <!-- <p-avatar image="https://tms-project-summer2021.atlassian.net/secure/projectavatar?pid=10001&avatarId=10407&size=xxlarge" shape="square" size="large" [style]="{'width': '40px', 'height': '40px'}"></p-avatar> -->
+            <!-- <div class="p-pl-2 project-info">
+                <div class="project-name">Task Management Software</div>
+                <div class="project-kind">Capstone Project</div>
+                <div class="p-ml-2" style="font-size: 18px;">TMSO Software</div>
+            </div> -->
+        </div>
+        <div class="p-d-flex p-jc-center system-name">TMSO Software</div>
+
+        <div *ngFor="let link of sideBarLinks">
+            <a *ngIf="link.url"
+               [routerLink]="link.url"
+               routerLinkActive="active"
+               class="link allowed" pRipple>
+               <i class="pi {{link.icon}}"></i>
+                <div style="margin-left: 10px;">{{ link.name }}</div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="main-container">
+    <p-table #dt [value]="tasks" dataKey="id" styleClass="p-datatable-tasks" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowHover]="true"
+        [scrollable]="true" scrollHeight="622px" [loading]="loading">
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="taskNameCol">Task Name</th>
+                <th class="section">Section</th>
+                <th class="assignee">Assignee</th>
+                <th class="label">Label</th>
+                <th class="dueDate">Due date</th>
+                <th class="status">Status</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-task>
+            <tr class="p-selectable-row" style="cursor: pointer;" (click)="openDetailTaskDialog(task.taskId)">
+                <td class="taskNameCol">
+                    <i *ngIf="task.category == 'Task'" class="fas fa-check-square task-icon"></i>
+                    <i *ngIf="task.category == 'Subtask'" class="fas fa-share-alt-square task-icon"></i>
+                    <span>{{task.name}}</span>
+                </td>
+                <td class="section">
+                    {{task.section.name}}
+                </td>
+                <td class="assignee">
+                    <div *ngIf="task.assignee === null" class="task-assignee">
+                    </div>
+                    <div *ngIf="task.assignee !== null" class="task-assignee">
+                        <ngx-avatar class="image-avatar" [name]="shortName(task.assignee.fullName)"
+                            [src]="task.assignee.avatarUrl" size="30" initialsSize="2" [round]="true"></ngx-avatar>
+                        <span class="image-text">{{task.assignee.fullName}}</span>
+                    </div>
+                </td>
+                <td class="label">
+                    <div *ngFor="let label of task.listLabel">
+                        <div *ngIf="label == null">
+                        </div>
+                        <div *ngIf="label !== null">
+                            <p-tag [style]="{'background-color': '#'+label.color}">{{label.name}}</p-tag>
+                        </div>
+                    </div>
+                </td>
+                <td class="dueDate">
+                    <div *ngIf="task.dueDate === null" class="task-assignee">
+                    </div>
+                    <div *ngIf="task.dueDate !== null" class="task-assignee">
+                        <i class="pi pi-calendar" style="padding-right: 5px;"></i>{{task.dueDate | date}}
+                    </div>
+                </td>
+                <td class="status">
+                    {{task.taskStatus.name}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">There are no tasks in this project.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,5 @@
+<div class="p-mb-3">
+    <div class="p-mb-1 due-date-section">Due date</div>
+    <p-calendar [(ngModel)]="dueDate" utc="true" placeholder="None" appendTo="body" dateFormat="dd/mm/yy" dataType="date" utc="true" [style]="{'width':'12rem'}" (onSelect)="onChange($event)"></p-calendar>
+</div>
+

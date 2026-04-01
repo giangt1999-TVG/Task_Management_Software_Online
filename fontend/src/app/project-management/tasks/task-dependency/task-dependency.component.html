@@ -1,0 +1,60 @@
+<div class="dependency-container">
+    <div class="p-d-flex dependency-header">
+        <div class="dependency-title">Dependencies</div>
+        <div class="p-ml-auto plus-icon" pRipple (click)="showNewDialog()">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="dependency-body">
+        <ng-container *ngIf="task.dependencies.length > 0; else emptySection">
+            <div class="p-d-flex p-mb-2 p-shadow-1 dependency-item" *ngFor="let item of task.dependencies; let i = index" (click)="showUpdateDialog(item.dependencyId)">
+                <div class="p-d-flex p-ai-center task-title" [pTooltip]="item.taskName" tooltipPosition="bottom" (click)="openTaskModelDialog($event, item.taskDenpendencyId)">{{ item.taskName }}</div>
+                <div class="p-d-flex p-ai-center p-ml-auto">
+                    <div class="p-mr-6">{{ item.dependencyName }}</div>
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-danger" (click)="confirmDelete($event, item.dependencyId)"></button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #emptySection>
+            <div>
+                No dependency. New dependencies will show up here.
+            </div>
+        </ng-template>
+    </div>
+    <p-dialog header="Add a new dependency" [(visible)]="displayNewPopup" [modal]="true" [closable]="false" [draggable]="false" [style]="{'width': '450px'}" [contentStyle]="{'padding-top': '5px', 'padding-bottom': '5px'}">
+        <p-dropdown [options]="dependencyTasks" 
+                    [(ngModel)]="selectedTask" 
+                    optionLabel="name" 
+                    appendTo="body" 
+                    [style]="{'width': '100%', 'margin-bottom': '10px'}" 
+                    [filter]="true" 
+                    filterBy="name" 
+                    [showClear]="true" 
+                    placeholder="Select a task"
+                    >
+            <ng-template let-item pTemplate="selectedItem">
+                {{ item.name }}
+            </ng-template>
+            <ng-template let-task pTemplate="item">
+                <div [pTooltip]="task.name"> 
+                    <li [style]="{'overflow': 'hidden', 'white-space': 'nowrap', 'text-overflow': 'ellipsis', 'width': '350px'}"><span>{{task.name}}</span></li> 
+                </div>
+            </ng-template>    
+        </p-dropdown>
+        <p-dropdown [options]="dependencies" [(ngModel)]="selectedDependency" optionLabel="name" appendTo="body" [style]="{'width': '100%'}" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a dependency"></p-dropdown>
+        <ng-template pTemplate="footer">
+            <p-button (click)="closeNewDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+            <p-button (click)="createNewDependency()" label="Save" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+    <p-dialog header="Update a dependency" [(visible)]="displayUpdatePopup" [modal]="true" [closable]="false" [draggable]="false" [style]="{'width': '450px'}" [contentStyle]="{'padding-top': '5px', 'padding-bottom': '5px'}">
+        <p-dropdown [options]="dependencyTasks" [(ngModel)]="selectedTask" optionLabel="name" appendTo="body" [style]="{'width': '100%', 'margin-bottom': '10px'}" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a task"></p-dropdown>
+        <p-dropdown [options]="dependencies" [(ngModel)]="selectedDependency" optionLabel="name" appendTo="body" [style]="{'width': '100%'}" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a dependency"></p-dropdown>
+        <ng-template pTemplate="footer">
+            <p-button (click)="closeUpdateDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+            <p-button (click)="updateDependency()" label="Save" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+    <p-confirmPopup key="deleteDependencyPopup"></p-confirmPopup>
+</div>

@@ -1,0 +1,101 @@
+<div class="header">
+    <div class="p-d-flex p-px-4 p-py-3">
+        <div class="header-logo">
+            <div *ngIf="currentUser?.mainRole == 'Admin'" [routerLink]="['/account-list']" class="home-page" pRipple>
+                <a>
+                    <div class="p-d-flex p-jc-center p-ai-center">
+                        <img src="../../../assets/image/logo-website.svg" alt="Logo website" width="20" height="20">
+                        <div class="p-ml-2" style="font-size: 18px;">TMSO Software</div>
+                    </div>
+                </a>
+            </div>
+            <div *ngIf="currentUser?.mainRole != 'Admin'" [routerLink]="['/home-user']" class="home-page" pRipple>
+                <a>
+                    <div class="p-d-flex p-jc-center p-ai-center">
+                        <img src="../../../assets/image/logo-website.svg" alt="Logo website" width="20" height="20">
+                        <div class="p-ml-2" style="font-size: 18px;">TMSO Software</div>
+                    </div>
+                </a>
+            </div>
+            <div class="p-d-flex p-jc-center p-ai-center" style="margin-top: -1.2rem; padding-left: 10px;">
+                <img src="../../../assets/image/fpt-university-1.png" alt="fpt logo" width="50" height="30">
+                <div class="p-ml-2" style="font-size: 18px; font-weight: bolder;">FPT University</div>
+            </div>
+        </div>
+        <div class="p-d-flex p-ml-auto">
+            <div class="p-mr-3 notification" (click)="noti.toggle($event)">
+                <i style="position: absolute; top: 10px; left: 12px;" class="fas fa-bell noti-bell"></i>
+                <i style="position: absolute; top: 10px; left: 12px;" *ngIf="unread != 0" pBadge value="{{unread}}"
+                    class="fas fa-bell noti-bell"></i>
+            </div>
+            <p-overlayPanel #noti styleClass="p-overlay-notification" [style]="{width: '500px', padding: '0'}">
+                <div class="noti-container">
+                    <div class="noti-header">
+                        <span class="noti-header-title text-title">Notifications</span>
+                        <button pButton pRipple type="button" icon="pi pi-check-circle" label="Mark all as read"
+                            class="p-button-text" (click)="markAsRead()"></button>
+                    </div>
+                    <div class="noti-content-container">
+                        <div style="text-align: center;" class="noti-content" *ngIf="notifications.length == 0">
+                            <span>You don't have any notification</span>
+                        </div>
+                        <div *ngFor="let notification of notifications">
+                            <div class="noti-content p-grid" [ngClass]="[notViewed]"
+                                *ngIf="notification.isViewed == false">
+                                <div class="p-col-11">
+                                    <div class="noti-content-header">
+                                        <span style="padding-right: 10px;"
+                                            class="noti-content-title">{{notification.content.Title}}</span>
+                                        <span class="noti-content-realtime">{{notification.createdDate |
+                                            timeAgo}}</span>
+                                    </div>
+                                    <div class="noti-content-content">
+                                        {{notification.content.Content}}
+                                    </div>
+                                </div>
+                                <div *ngIf="viewed != true" class="p-col-1">
+                                    <i class="pi pi-circle-on"></i>
+                                </div>
+                            </div>
+                            <div class="noti-content is-viewed p-grid" *ngIf="notification.isViewed == true">
+                                <div class="p-col-11">
+                                    <div class="noti-content-header">
+                                        <span style="padding-right: 10px;"
+                                            class="noti-content-title">{{notification.content.Title}}</span>
+                                        <span class="noti-content-realtime">{{notification.createdDate |
+                                            timeAgo}}</span>
+                                    </div>
+                                    <div class="noti-content-content">
+                                        {{notification.content.Content}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p-overlayPanel>
+            <div class="p-d-flex p-jc-center p-ai-center user-info" pRipple (click)="op.toggle($event)">
+                <div class="p-mr-2">
+                    <div class="full-name">{{ currentUser?.fullName }}</div>
+                    <div class="role">{{ currentUser?.mainRole }}</div>
+                </div>
+                <ngx-avatar [src]="currentUser?.avatarUrl" [name]="shortName" size="30" initialsSize="2" [round]="true"
+                    *ngIf="currentUser?.avatarUrl === null else elseBlock">
+                </ngx-avatar>
+                <ng-template #elseBlock>
+                    <ngx-avatar [src]="currentUser?.avatarUrl" size="30" initialsSize="2" [round]="true">
+                    </ngx-avatar>
+                </ng-template>
+            </div>
+            <p-overlayPanel #op styleClass="p-overlay-userinfo" [style]="{'width': '200px', 'padding': '0'}">
+                <ng-template pTemplate>
+                    <div class="user-menu-item" (click)="openUserProfileDialog()">User profile</div>
+                    <div class="user-menu-item" (click)="openChangePasswordDialog()">Change password</div>
+                    <p-divider [style]="{'width': '100%', 'height': '5px', 'color': '#5e6c84', 'margin': '0'}">
+                    </p-divider>
+                    <div class="user-menu-item" (click)="logout()">Log out</div>
+                </ng-template>
+            </p-overlayPanel>
+        </div>
+    </div>
+</div>

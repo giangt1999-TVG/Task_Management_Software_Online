@@ -1,0 +1,24 @@
+<div class="main-container-dialog">
+    <div mat-dialog-title class="add-member-title">
+        <h1 class="text-title">Add A Student Member</h1>
+        <div class="div-task-function">
+            <span [mat-dialog-close]="true">
+                <i class="pi pi-times"></i>
+            </span>
+        </div>
+    </div>
+    <form [formGroup]="addNewMemberForm" (ngSubmit)="addNewMember()">
+    <div mat-dialog-content class="main-content">
+        <div class="div-list-member">
+            <label class="text-title">Student Member</label>
+            <p-multiSelect [options]="students" formControlName="studentSelected" defaultLabel="Select Students" [selectionLimit]="1"
+                optionLabel="fullName" [style]="{'width':'250px'}" class="dropdown">
+            </p-multiSelect>
+        </div>
+    </div>
+    <div class="button-add">
+        <button pButton pRipple type="button" label="Add Member" [disabled]="!addNewMemberForm.dirty"
+        class="p-button-rounded" (click)="addNewMember()"></button>
+    </div>
+    </form>
+</div>

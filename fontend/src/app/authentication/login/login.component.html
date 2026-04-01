@@ -1,0 +1,61 @@
+<div class="p-d-flex p-jc-center" style="padding-top: 100px;">
+    <div class="p-d-flex p-flex-column" style="width: 800px;">
+        <div class="p-d-flex p-jc-center" style="margin-top: 48px; margin-bottom: 20px;">
+            <img src="../../../assets/image/logo-website.svg" alt="Logo website" width="60" height="60">
+            <h1 class="p-ml-3 header-title" style="margin-top: 15px;
+            font-size: 70px !important; color: #5E6C84; ">TMSO</h1>
+        </div>
+        <div class=" p-shadow-15">
+            <!-- <img src="../../../assets/image/login-screen.jpg" alt="Logo website" width="400"> -->
+            <p-card>
+                <div style="display: flex;">
+                    <img src="../../../assets/image/login-screen.jpg" alt="Logo website" width="400">
+                    <div class="p-px-4" style="width: 400px; padding-top: 85px;">
+                        <p class="text-title title">Log in to TMSO</p>
+                        <div class="p-fluid p-mt-4">
+                            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
+                                <div class="p-field">
+                                    <input type="text" formControlName="emailAddress" pInputText placeholder="Enter email" aria-describedby="email-address-help" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.emailAddress.errors }"> 
+                                    <small *ngIf="submitted && f.emailAddress.errors && f.emailAddress.errors.required" id="email-address-help" class="p-error">Email address is required</small>
+                                    <small *ngIf="submitted && f.emailAddress.errors && f.emailAddress.errors.email" id="email-address-help" class="p-error">Email address is invalid</small>
+                                </div>
+                                <div class="p-field">
+                                    <input pPassword type="password" formControlName="password" placeholder="Enter password" [feedback]="false" class="input-password" aria-describedby="password-help" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.password.errors }" />
+                                    <small *ngIf="submitted && f.password.errors && f.password.errors.required" id="password-help" class="p-error">Password is required</small>
+                                </div>
+                                <p-button label="Log in" styleClass="login-button" [disabled]="loading" [loading]="loading" (onClick)="onSubmit()">
+                                </p-button>
+                                <p-message *ngIf="error" severity="error" [style]="{ 'margin-top': '20px' }" [text]="error"></p-message> 
+                            </form>
+                            <!-- <div class="p-d-flex p-jc-center p-mt-3">
+                                <p-divider align="center" [style]="{'width': '200px', 'color': '#5e6c84'}">
+                                    <div>OR</div>
+                                </p-divider>
+                            </div>
+                            <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-plain p-mb-3 external-login-button">
+                                <div style="margin: auto;">
+                                    <img alt="logo" src="../../../assets/image/logo-google.svg" style="width: 1.3rem"/>
+                                    <span class="p-ml-2 p-text-bold" style="margin: auto;">Continue with Google</span>
+                                </div>
+                            </button>
+                            <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-plain p-mb-3 external-login-button">
+                                <div style="margin: auto;">
+                                    <img alt="logo" src="../../../assets/image/logo-facebook.svg" style="width: 1.3rem"/>
+                                    <span class="p-ml-2 p-text-bold">Continue with Facebook</span>
+                                </div>
+                            </button>
+                            <button pButton pRipple type="button" class="p-button-raised p-button-text p-button-plain p-mb-3 external-login-button">
+                                <div style="margin: auto;">
+                                    <img alt="logo" src="../../../assets/image/logo-twitter.svg" style="width: 1.3rem"/>
+                                    <span class="p-ml-2 p-text-bold">Continue with Twitter</span>
+                                </div>
+                            </button> -->
+                            <p-divider class="p-mt-6"></p-divider>
+                            <div class="forgot-password">Can't log in? <a href="#">Forgot your password</a></div>
+                        </div>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+</div>

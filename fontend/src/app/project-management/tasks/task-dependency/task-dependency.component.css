@@ -1,0 +1,54 @@
+.dependency-container {
+    padding-left: 8px;
+    margin-top: 30px;
+}
+
+.dependency-header {
+    margin-bottom: -10px;
+}
+
+.dependency-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #5E6C84;
+    font-size: .8125rem;
+}
+
+.p-field-checkbox {
+    margin-bottom: 0 !important;
+}
+
+.dependency-item {
+    padding: 5px;
+    border: 1px solid rgb(223, 225, 230);
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.plus-icon {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    vertical-align: middle;
+    font-size: 0.8rem;
+    color: #3ABCA7;
+}
+
+.plus-icon:hover {
+    background-color: #f4f5f7;
+    box-shadow: 0 0 0 2px transparent;
+    cursor: pointer;
+}
+
+.task-title {
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+.task-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

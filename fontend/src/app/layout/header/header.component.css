@@ -1,0 +1,90 @@
+.header {
+    height: 60px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 8px rgb(38 50 56 / 20%);
+    position:absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.home-page {
+    height: 30px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 3px;
+    border: none;
+}
+
+.home-page a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.home-page:hover {
+    background-color: #deebffe6;
+    box-shadow: 0 0 0 2px transparent;
+}
+
+.user-info {
+    position: relative;
+    bottom: 5px;
+    padding: 5px 10px 5px 10px;
+    text-align: right;
+    font-weight: bold;
+    border-radius: 20px;
+    height: 40px;
+    user-select: none;
+}
+
+.user-info .role {
+    color: red;
+}
+
+.user-info:hover {
+    cursor: pointer;
+    background-color: #deebffe6;
+    box-shadow: 0 0 0 2px transparent;
+}
+
+.notification {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    color: black;
+    position: relative;
+    bottom: 5px;
+}
+
+.notification:hover {
+    background-color: #deebffe6;
+    color: #0052cc;
+    box-shadow: 0 0 0 2px transparent;
+    cursor: pointer;
+}
+
+.user-menu {
+    width: 100px;
+    margin-top: 65px;
+    position: relative;
+}
+
+.user-menu-item {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: #172b4d;
+}
+
+.user-menu-item:hover {
+    background-color: #ebecf0;
+    cursor: pointer;
+}
+
+.p-overlaypanel ::ng-deep {
+    left: 1214px !important;
+}
+

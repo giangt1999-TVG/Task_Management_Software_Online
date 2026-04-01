@@ -1,0 +1,30 @@
+<p-toast position="top-right" key="tr"></p-toast>
+<div class="main-container-dialog">
+    <div mat-dialog-title class="import-accounts-title">
+        <h1 class="header-title">Import Your Excel File Here</h1>
+        <div class="div-task-function">
+            <div class="p-r-20 pc">
+                <a href="https://storage.googleapis.com/download/storage/v1/b/tmso-files/o/Import_Accounts_Template.xlsx?generation=1628415030988646&alt=media" 
+                download="Import_Accounts_Template.xlsx" style="text-decoration: none;">
+                    <button pButton pRipple label="Download Template" icon="pi pi-download" class="button-title p-button-rounded"
+                        [style]="{'height':'32px'}"></button>
+                </a>
+            </div>
+            <div>
+                <span [mat-dialog-close]="true">
+                    <i class="pi pi-times"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div mat-dialog-content class="main-content">
+        <p-fileUpload name="accountFiles[]" [customUpload]="true" (uploadHandler)="onUpload($event)" [showCancelButton]="false"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .xls, .xlsx">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload>
+    </div>
+</div>

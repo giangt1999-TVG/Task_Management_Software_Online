@@ -1,0 +1,53 @@
+<div class="p-d-flex p-ml-2 p-mt-2 p-mb-3">
+    <ngx-avatar *ngIf="createMode" class="comment-avatar" [src]="currentUser?.avatarUrl" [name]="shortName" size="30"
+        initialsSize="2" [round]="true"></ngx-avatar>
+    <ngx-avatar *ngIf="!createMode" class="comment-avatar" [src]="comment.author.avatarUrl" [name]="shortName" size="30"
+        initialsSize="2" [round]="true"></ngx-avatar>
+    <div class="p-ml-2" style="width: 100%;">
+        <div class="p-d-flex">
+            <div *ngIf="createMode" class="p-mr-3 p-mb-2 comment-user">
+                {{ currentUser?.fullName }}
+            </div>
+            <div *ngIf="!createMode" class="p-mr-3 p-mb-2 comment-user">
+                {{ comment.author.fullName }}
+            </div>
+            <div *ngIf="!createMode" class="comment-time">
+                {{ comment.createdDate | date:"medium" }}
+            </div>
+        </div>
+        <div>
+            <form [formGroup]="createNewCommentForm" (ngSubmit)="addComment()">
+                <div class="p-pt-1" *ngIf="createMode && !edittingComment">
+                    <textarea pInputTextarea class="textarea-border" placeholder="Add a comment" [rows]="1"
+                        [autoResize]="true" formControlName="commentText" (click)="setCommentEdit(true)"></textarea>
+                    <div *ngIf="isEditing" class="flex pt-2 pb-4 items-center">
+                        <button pButton pRipple type="button" label="Save" (click)="addComment()"
+                            class="p-mr-2 p-button-sm save-button"></button>
+                        <button pButton pRipple type="button" label="Cancel" (click)="cancelAddComment()"
+                            class="p-button-text p-button-sm cancel-button"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div *ngIf="!createMode && !edittingComment" [innerHTML]="comment.content">
+        </div>
+        <form [formGroup]="updateCommentForm" (ngSubmit)="editCommentText(comment.commentId)">
+            <div *ngIf="createMode && edittingComment">
+                <textarea pInputTextarea class="textarea-border" [rows]="1" [autoResize]="true"
+                    formControlName="commentTextUpdate" (click)="setCommentUpdateEdit(true)"></textarea>
+                <div *ngIf="isEditing" class="flex pt-2 pb-4 items-center">
+                    <button pButton pRipple type="button" label="Save" (click)="editCommentText(comment.commentId)"
+                        class="p-mr-2 p-button-sm save-button"></button>
+                    <button pButton pRipple type="button" label="Cancel" (click)="cancelEditComment()"
+                        class="p-button-text p-button-sm cancel-button"></button>
+                </div>
+            </div>
+        </form>
+        <div *ngIf="!createMode && currentUser?.id === comment.author.userId else elseBlock" class="comment-funtion">
+            <a class="text-normal" (click)="editComment(comment.commentId) ">Edit</a>
+            <a class="text-normal" style="margin-left: 10px;" (click)="deleteComment(comment.commentId)">Delete</a>
+        </div>
+        <ng-template #elseBlock></ng-template>
+    </div>
+    <p-confirmDialog [style]="{width: '20vw'}" [baseZIndex]="10000"></p-confirmDialog>
+</div>

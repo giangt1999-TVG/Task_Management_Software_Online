@@ -1,0 +1,60 @@
+<div class="checklist-container">
+    <div class="p-d-flex checklist-header">
+        <div class="checklist-title">Checklists ({{numberOfTaskDone}}/{{numberofTask}} DONE)</div>
+        <div class="p-ml-auto plus-icon" pRipple (click)="showNewDialog()">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="checklist-body">
+        <ng-container *ngIf="task.checklists.length > 0; else emptySection">
+            <div class="p-d-flex p-mb-2 p-shadow-1 checklist-item"
+                *ngFor="let item of task.checklists; let i = index" (click)="showUpdateDialog(item.checklistId)">
+                <div class="p-field-checkbox">
+                    <p-checkbox [binary]="true"
+                        [(ngModel)]="item.isCompleted" (onChange)="toggleCheckbox($event, item.checklistId)"></p-checkbox>
+                    <label [pTooltip]="item.name" tooltipPosition="bottom" tooltipStyleClass="tooltip">{{ item.name }}</label>
+                    <!-- <input pInputText value="{{item.name}}"
+                        style="margin-left: 10px ; width: 350px; height: 70%; border: none;" name="value{{i}}" formControlName="checklistName" /> -->
+                </div>
+                <div class="p-d-flex p-ai-center p-ml-auto">
+                    <div class="p-mr-6">{{ item.isCompleted ? 'Completed' : 'Not completed' }}</div>
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-danger"
+                        (click)="confirmDelete($event, item.checklistId)"></button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #emptySection>
+            <div>
+                No checklist. New checklists will show up here.
+            </div>
+        </ng-template>
+    </div>
+    <p-dialog header="Add a new checklist" [(visible)]="displayNewPopup" [modal]="true" [closable]="false" [draggable]="false" [style]="{'width': '450px'}" [contentStyle]="{'padding-top': '5px', 'padding-bottom': '5px'}">
+        <form [formGroup]="newCheckListForm">
+            <div class="p-field">
+                <input type="text" formControlName="name" pInputText placeholder="Enter name" aria-describedby="checklist-name-help" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.name.errors }"> 
+                <small *ngIf="submitted && f.name.errors && f.name.errors.required" id="checklist-name-help" class="p-error">Checklist name is required</small>
+                <small *ngIf="submitted && f.name.errors && f.name.errors.maxlength" id="checklist-name-help" class="p-error">Checklist name can't exceed 200 characters</small>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <p-button (click)="closeNewDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+            <p-button (click)="createNewCheckList()" label="Save" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+    <p-dialog header="Update a checklist" [(visible)]="displayUpdatePopup" [modal]="true" [closable]="false" [draggable]="false" [style]="{'width': '450px'}" [contentStyle]="{'padding-top': '5px', 'padding-bottom': '5px'}">
+        <form [formGroup]="updateCheckListForm">
+            <div class="p-field">
+                <input type="text" formControlName="name" pInputText placeholder="Enter name" aria-describedby="checklist-update-name-help" [ngClass]="{ 'ng-invalid ng-dirty': submitted && u.name.errors }"> 
+                <small *ngIf="submitted && u.name.errors && u.name.errors.required" id="checklist-update-name-help" class="p-error">Checklist name is required</small>
+                <small *ngIf="submitted && u.name.errors && u.name.errors.maxlength" id="checklist-update-name-help" class="p-error">Checklist name can't exceed 200 characters</small>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <p-button (click)="closeUpdateDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+            <p-button (click)="updateCheckList(currentChecklistIdUpdated)" label="Save" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+    <p-confirmPopup key="deleteChecklistPopup"></p-confirmPopup>
+</div>

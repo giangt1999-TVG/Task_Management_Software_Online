@@ -1,0 +1,71 @@
+<p-confirmDialog [style]="{width: '20vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<div class="main-container">
+    <div class="header">
+        <div class="header-name">
+            <h1 class="header-title">Account List</h1>
+        </div>
+        <div class="header-action">
+            <span class="p-input-icon-left" style="padding-right: 20px;">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" [(ngModel)]="keyWord" (keydown)="searchAccountKeyDown($event)"
+                    placeholder="Search by username or Full Name" style="width: 280px;" />
+            </span>
+            <span style="padding-right: 20px;">
+                <button pButton pRipple type="button" label="Create Account" icon="pi pi-plus" class="p-button-raised p-button-rounded"
+                    (click)="openAddAccoutDialog()"></button>
+            </span>
+            <button pButton pRipple type="button" label="Import Account" icon="pi pi-plus" class="p-button-raised p-button-rounded"
+                (click)="openImportAccoutDialog()"></button>
+        </div>
+    </div>
+    <hr />
+    <p-table #dt [value]="accounts" dataKey="id" styleClass="p-datatable-accounts" [rows]="10"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowHover]="true"
+        [scrollable]="true" scrollHeight="622px" [filterDelay]="0"
+        [globalFilterFields]="['rollNumber','userName','fullName','email','role']" [loading]="loading">
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="rollNumber" pSortableColumn="rollNumber">Roll Number <p-sortIcon field="rollNumber"></p-sortIcon>
+                </th>
+                <th class="userName" style="width: 350px;" pSortableColumn="userName">User Name <p-sortIcon field="userName"></p-sortIcon>
+                </th>
+                <th class="fullName" style="width: 350px;" pSortableColumn="fullName">Full Name <p-sortIcon field="fullName"></p-sortIcon>
+                </th>
+                <th class="email" style="width: 450px;" pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon>
+                </th>
+                <th class="role" pSortableColumn="role">Role <p-sortIcon field="role"></p-sortIcon>
+                </th>
+                <th class="deleteBtn" style="width: 8rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-account>
+            <tr class="p-selectable-row">
+                <td class="rollNumber" (click)="openEditAccoutDialog(account.id)" style="cursor: pointer;">
+                    {{account.rollNumber}}
+                </td>
+                <td class="userName" (click)="openEditAccoutDialog(account.id)" style="cursor: pointer; width: 350px;">
+                    {{account.userName}}
+                </td>
+                <td class="fullName" (click)="openEditAccoutDialog(account.id)" style="cursor: pointer; width: 350px;">
+                    {{account.fullName}}
+                </td>
+                <td class="email" (click)="openEditAccoutDialog(account.id)" style="cursor: pointer; width: 450px;">
+                    {{account.email}}
+                </td>
+                <td class="role" (click)="openEditAccoutDialog(account.id)" style="cursor: pointer;">
+                    {{account.role}}
+                </td>
+                <td class="deleteBtn" style="text-align: center; width: 8rem">
+                    <button *ngIf="account.role != 'Admin'" pButton type="button" class="p-button-danger" icon="pi pi-trash"
+                        (click)="deleteAccount(account.userName, accounts.indexOf(account), account.id)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="8">No Account found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

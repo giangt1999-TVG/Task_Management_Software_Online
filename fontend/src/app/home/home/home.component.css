@@ -1,0 +1,50 @@
+.main-container{
+    padding: 16px 16px 16px 16px;
+}
+
+.div-header-home{
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.main-content{
+    padding: 10px 10px 10px 10px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.div-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.div-recent-project{
+    margin-top: 20px;
+}
+
+.div-list-task:hover{
+    background-color: #cacaca;
+}
+
+.div-notify{
+    display: flex;
+    justify-content: center;
+}
+
+.p-button-rounded{
+    width: 30px !important;
+    height: 30px !important;
+}
+
+/* .pi{
+    color: #3abca7;
+} */
+
+.style-text{
+    color: #3abca7;
+    
+}

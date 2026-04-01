@@ -1,0 +1,93 @@
+.main-container{
+    padding: 16px 16px 16px 16px;
+}
+
+
+.main-content{
+    padding: 10px 10px 10px 10px;
+    max-width: 50%;
+    margin: auto;
+}
+
+.display-field{
+    margin-bottom: 10px;
+}
+
+input{
+    width: 100%;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+textarea:hover:not(:focus) {
+    background-color: #f4f5f7;
+}
+
+p-multiSelect{
+    width: 500px;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+p-calendar{
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+.title-content{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.column{
+    float: left;
+    width: 50%;
+}
+
+
+@media screen and (max-width: 1440px) {
+    .column2{
+        float: left;
+        width: 33.3%;
+    }
+  }
+
+@media screen and (max-width: 1366px) {
+    .column2 {
+        float: left;
+        width: 50%;
+        margin-top: 10px;
+    }
+}
+  
+.row::after{
+    display: table;
+    clear: both;
+    flex-wrap: wrap;
+}
+
+.div-date-picker{
+    margin-bottom: 10px;
+}
+
+.div-project-member{
+    margin-bottom: 10px;
+}
+
+.div-button-create{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

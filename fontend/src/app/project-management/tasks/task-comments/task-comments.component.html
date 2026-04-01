@@ -1,0 +1,4 @@
+<app-task-comment [createMode]="true" [task]="task" (emitter)="receiveDataFromChild($event)">
+</app-task-comment>
+<app-task-comment *ngFor="let comment of task.comments" [comment]="comment" [task]="task">
+</app-task-comment>

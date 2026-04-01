@@ -1,0 +1,5 @@
+<div>
+    <app-task-detail *ngIf="task" [task]="task"
+                     (onClosed)="closeModal()" (emitter)="receiveDataFromChild($event)">
+    </app-task-detail>
+</div>

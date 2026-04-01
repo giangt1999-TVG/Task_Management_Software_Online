@@ -1,0 +1,10 @@
+<textarea pInputTextarea 
+        [rows]="1" 
+        [autoResize]="true"
+        [formControl]="titleControl"
+        (blur)="onChange($event)"
+        maxlength="200"
+        required="required"
+        [ngClass]="{ 'ng-invalid ng-dirty error-border': titleControl.hasError('required') }" 
+        aria-describedby="title-help"></textarea>
+        <small *ngIf="titleControl.hasError('required')" id="title-help" class="p-error">Name is required</small>

@@ -1,0 +1,49 @@
+<div class="subtask-container">
+    <div class="p-d-flex subtask-header">
+        <div class="subtask-title">Subtasks</div>
+        <div *ngIf="task.parentId === 0 || task.parentId === null" class="p-ml-auto plus-icon" pRipple (click)="showNewDialog()">
+            <i class="fas fa-plus"></i>
+        </div>
+    </div>
+    <p-divider></p-divider>
+    <div class="subtask-body">
+        <ng-container *ngIf="task.subtasks.length > 0; else emptySection">
+            <div class="p-d-flex p-mb-2 p-shadow-1 subtask-item" *ngFor="let item of task.subtasks; let i = index" (click)="showUpdateDialog(item.taskId)">
+                <div class="p-d-flex p-ai-center task-title" [pTooltip]="item.name" tooltipPosition="bottom" (click)="openTaskModelDialog($event, item.taskId)">{{ item.name }}</div>
+                <div class="p-d-flex p-ai-center p-ml-auto">
+                    <div class="p-mr-6">{{ item.statusName }}</div>
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-danger" (click)="confirmDelete($event, item.taskId)"></button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #emptySection>
+            <div>
+                No subtask. New subtasks will show up here.
+            </div>
+        </ng-template>
+    </div>
+    <p-dialog header="Add a new subtask" [(visible)]="displayNewPopup" [modal]="true" [closable]="false" [draggable]="false" [style]="{'width': '450px'}" [contentStyle]="{'padding-top': '5px', 'padding-bottom': '5px'}">
+        <p-dropdown [options]="subtasks" [(ngModel)]="selectedSubtask" optionLabel="name" appendTo="body" [style]="{'width': '100%'}" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a task">
+            <ng-template let-item pTemplate="selectedItem">
+                {{ item.name }}
+            </ng-template>
+            <ng-template let-task pTemplate="item">
+                <div [pTooltip]="task.name"> 
+                    <li [style]="{'overflow': 'hidden', 'white-space': 'nowrap', 'text-overflow': 'ellipsis', 'width': '350px'}"><span>{{task.name}}</span></li> 
+                </div>
+            </ng-template>    
+        </p-dropdown>
+        <ng-template pTemplate="footer">
+            <p-button (click)="closeNewDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+            <p-button (click)="createNewSubtask()" label="Save" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+    <p-dialog header="Update subtask" [(visible)]="displayUpdatePopup" [modal]="true" [closable]="false" [draggable]="false" [style]="{'width': '450px'}" [contentStyle]="{'padding-top': '5px', 'padding-bottom': '5px'}">
+        <p-dropdown [options]="subtasks" [(ngModel)]="currentSubtask" optionLabel="name" appendTo="body" [style]="{'width': '100%'}" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a task"></p-dropdown>
+        <ng-template pTemplate="footer">
+            <p-button (click)="closeUpdateDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+            <p-button (click)="updateSubtask()" label="Save" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-dialog>
+    <p-confirmPopup key="deleteSubtaskPopup"></p-confirmPopup>
+</div>

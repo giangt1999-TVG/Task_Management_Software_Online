@@ -1,0 +1,28 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: fe-tms/index.html
+  upload: fe-tms/index.html
+
+#  Routing rules for resources, css, js, images etc. Any file with format filename.ext
+- url: /(.*\.(.+))$
+  static_files: fe-tms/\1
+  upload: fe-tms/(.*\.(.+))$
+
+#  Routing rule for Angular Routing
+- url: /(.*)
+  static_files: fe-tms/index.html
+  upload: fe-tms/index.html
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE

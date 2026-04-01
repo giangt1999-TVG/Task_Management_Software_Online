@@ -1,0 +1,151 @@
+/* .p-buttonset .p-button:last-of-type::ng-deep {
+    border-top-left-radius: none !important;
+    border-bottom-left-radius: none !important;
+}
+.p-buttonset .p-button:first-of-type::ng-deep {
+    border-top-right-radius: none !important;
+    border-bottom-right-radius: none !important;
+} */
+
+.p-button::ng-deep {
+    background: #3ABCA7 !important;
+    border: 1px solid #3ABCA7 !important;
+}
+
+.p-button:enabled:hover::ng-deep {
+    background: #33a793 !important;
+    color: #ffffff;
+    border-color: #33a793 !important;
+}
+
+.main-container-dialog{
+    width: 700px;
+    height: auto;
+}
+
+.task-detail-title{
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 30px;
+}
+
+.div-task-function{
+    display: flex;
+    justify-content: space-between;
+    justify-items: baseline;
+}
+
+.main-content{
+    padding: 10px 10px 10px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow-x: hidden;
+}
+
+.column{
+    float: left;
+    width: 50%;
+    height: auto;
+  }
+  
+.row::after{
+    content: "";
+    display: table;
+    clear: both;
+    margin-top: 10px;
+}
+
+.div-description-text{
+    margin-top: 20px;
+    display: table-row;
+    justify-content: space-between;
+}
+
+.label-tittle{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.input-disabled{
+    background-color: #f6f8f9;
+}
+
+.div-upload-image{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.PlaceholderAvatar {
+    background: transparent;
+    fill: #6f7782;
+    align-items: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    transition-duration: 200ms;
+    transition-property: border;
+}
+
+.PhotoUpload-photoDisplay {
+    height: 120px;
+    margin-right: 16px;
+    position: relative;
+    width: 120px;
+}
+
+/* .PlaceholderAvatar:hover {
+    border: 2px solid #14aaf5;
+} */
+
+.PlaceholderAvatar--xlarge {
+    height: 120px;
+    width: 120px;
+}
+
+.primary-link-button{
+    cursor: pointer;
+}
+
+.PhotoUpload-buttons {
+    margin-bottom: 4px;
+}
+
+.PhotoUpload-helpMessage {
+    line-height: 18px;
+    color: #6f7782;
+}
+
+.PhotoUpload-hiddenFileInput {
+    display: none;
+}
+
+.input {
+    line-height: normal;
+}
+
+.primary-link-button{
+    cursor: pointer;
+    color: #14aaf5;
+    fill: #14aaf5;
+    text-decoration: underline;
+}
+
+.primary-link-button:hover{
+    color: #1296d8;
+    fill: #1296d8;
+}
+
+.div-button-save{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-upload-file{
+    display: none;
+}

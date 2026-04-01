@@ -1,0 +1,27 @@
+<div class="attachment-container">
+    <div class="p-d-flex attachment-header">
+        <div class="attachment-title">Attachments</div>
+    </div>
+    <p-divider></p-divider>
+    <div class="attachment-body">
+        <form class="p-mb-3" action="#">
+            <input type="file" id="myFile" name="filename" (change)="selectedFileUpload($event)">
+        </form>
+        <ng-container *ngIf="task.fileAttachments.length > 0; else emptySection">
+            <div class="p-d-flex p-mb-2 attachment-item" *ngFor="let item of task.fileAttachments;">
+                <div class="p-d-flex p-ai-center">
+                    <a href="{{item.mediaLink}}" download="{{item.name}}">{{ item.name }}</a>
+                </div>
+                <div class="p-d-flex p-ai-center p-ml-auto">
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-danger"
+                        (click)="deleteFile(item.fileAttachmentId)"></button>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #emptySection>
+            <div>
+                No attachment file. New attachment files will show up here.
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.comment-user {
+    font-weight: 500;
+    color: black;
+}
+
+.comment-time {
+    font-size: .875rem;
+    color: black;
+    padding-top: 1px;
+}
+
+.textarea-border {
+    color: rgb(137, 147, 164);
+    border: 1px solid rgb(223, 225, 230);
+    cursor: text;
+    user-select: none;
+    padding: 12px 16px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.textarea-border:hover:not(:focus) {
+    background-color: #f4f5f7;
+    border: 1px solid rgb(223, 225, 230);;
+}
+
+.cancel-button {
+    color: black;
+}
+
+.cancel-button:hover {
+    background-color: #f4f5f7 !important;
+    color: black !important;
+}
+
+.save-button {
+    border: none !important;
+}
+
+.comment-funtion{
+    margin-top: 5px;
+    display: flex;
+}
+
+.text-normal{
+    cursor: pointer;
+}

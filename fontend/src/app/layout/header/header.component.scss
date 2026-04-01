@@ -1,0 +1,193 @@
+:host ::ng-deep {
+    // .p-overlaypanel.p-overlay-notification {
+    //     left: 1280px !important;
+    // }
+    .pi {
+        font-size: 6px;
+        color: blue;
+    }
+    .p-grid {
+        margin-right: -10px;
+        margin-left: -10px;
+        margin-top: -0.5rem;
+        margin-bottom: -0.5rem;
+    }
+    .p-badge {
+        background:rgb(0, 155, 0) !important;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    // :host ::ng-deep {
+    //     .p-overlaypanel.p-overlay-notification {
+    //         top: 51px !important;
+    //         left: 802px !important;
+    //     }
+    // }
+    .noti-content-container {
+        max-height: 560px !important;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    :host ::ng-deep {
+        .p-overlaypanel.p-overlay-notification {
+            width: 450px !important;
+            // top: 51px !important;
+            // left: 778px !important;
+        }
+    }
+    .noti-content-container {
+        max-height: 490px !important;
+    }
+}
+
+.noti-content-container {
+    max-height: 680px;
+    overflow: auto;
+    overflow-x: hidden;
+    margin-right: -0.6rem;
+    margin-left: -0.6rem;
+    margin-bottom: -0.4rem;
+}
+
+.noti-container {
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.is-viewed {
+    background-color: whitesmoke;
+}
+
+.not-viewed {
+    background-color: white;
+}
+
+.noti-header {
+    display: flex;
+    justify-content: space-between;
+    justify-items: baseline;
+    padding-bottom: 20px;
+}
+
+.noti-content-header {
+    padding-top: 5px;
+}
+
+.noti-header-title {
+    font-weight: bolder;
+    padding-top: 10px;
+}
+
+.noti-content {
+    padding: 10px;
+}
+
+.noti-content-title {
+    font-weight: 500;
+}
+
+.noti-content-realtime {
+    font-size: 14px;
+}
+
+.noti-unread {
+    position: absolute;
+    top: 23px;
+    left: 26px;
+    border-radius: 50%;
+    background: blue;
+    color: white;
+}
+
+.header {
+    height: 60px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 8px rgb(38 50 56 / 20%);
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+.home-page {
+    height: 30px;
+    padding-left: 3px;
+    padding-right: 20px;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+.home-page a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.header-logo {
+    display: flex;
+}
+
+.user-info {
+    position: relative;
+    bottom: 5px;
+    padding: 5px 10px 5px 10px;
+    text-align: right;
+    font-weight: bold;
+    border-radius: 20px;
+    height: 40px;
+    user-select: none;
+}
+
+.user-info .role {
+    color: red;
+}
+
+.user-info:hover {
+    cursor: pointer;
+    // background-color: #deebffe6;
+    background-color:rgba(125, 255, 125, 0.205);
+    box-shadow: 0 0 0 2px transparent;
+}
+
+.notification {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    color: black;
+    position: relative;
+    bottom: 5px;
+}
+
+.notification:hover {
+    background-color:rgba(125, 255, 125, 0.205);
+    color: rgb(0, 107, 0);
+    box-shadow: 0 0 0 2px transparent;
+    cursor: pointer;
+}
+
+// .p-badge::ng-deep {
+//     background:rgba(0, 107, 0) !important;
+// }
+
+.user-menu {
+    width: 100px;
+    margin-top: 65px;
+    position: relative;
+}
+
+.user-menu-item {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    color: #172b4d;
+}
+
+.user-menu-item:hover {
+    background-color: #ebecf0;
+    cursor: pointer;
+}

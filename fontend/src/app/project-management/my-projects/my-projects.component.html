@@ -1,0 +1,82 @@
+<div class="main-container">
+    <div class="div-header-home">
+        <h1 class="header-title">My Projects</h1>
+    </div>
+    <hr style="margin-bottom: 0px;">
+    <div class="div-recent-project">
+        <div class="div-title">
+            <div>
+                <!-- <div class="p-field-radiobutton">
+                    <p-radioButton name="val1" value="My Project" [(ngModel)]="selectedValue" inputId="myProject"></p-radioButton>
+                    <label for="city1">My Project</label>
+                    <p-radioButton name="city" value="All Project" [(ngModel)]="selectedValue" inputId="allProject" style="padding-left: 10px;"></p-radioButton>
+                    <label for="city2">All Project</label>
+                </div> -->
+            </div>
+            <div style="align-items: baseline; display: flex;">
+                <span class="p-input-icon-left" style="padding-right: 15px;">
+                    <i class="pi pi-search"></i>
+                    <input style="background-color: white; width: 300px;" pInputText type="text" [(ngModel)]="keyWord"
+                        placeholder="Search By Code or Name Project" (keydown)="getProjectForSearchBar($event)" field="name"
+                        minLength="1" />
+                </span>
+                <button style="margin-bottom: 5px;" *ngIf="currentUser?.mainRole === 'Teacher'; else elseBlock1" pButton pRipple type="button" icon="pi pi-plus"
+                class="p-button-rounded p-button-success" (click)="openNewProjectDialog()"></button>
+                <ng-template #elseBlock1></ng-template>
+            </div>
+        </div>
+    </div>
+    <div class="div-list-project" [hidden]="isShowDivProject">
+        <p-table [value]="projects" [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+            [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowHover]="true" [scrollable]="true" scrollHeight="622px" [filterDelay]="0"
+            [globalFilterFields]="['code','name','startDate']">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="code" style="width: 200px;">Project Code <p-sortIcon field="code"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="name" style="width: 500px;">Project Name <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th style="width: 300px;">Teacher
+                    </th>
+                    <th style="width: 300px;">Teamlead
+                    </th>
+                    <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-project>
+                <tr [routerLink]="['/project', project.id, 'kanban-view', project.id]" style="cursor: pointer;">
+                    <td style="width: 200px;">{{project.code}}</td>
+                    <td style="width: 500px;">{{project.name}}</td>
+                    <td style="width: 300px;">
+                        <div *ngFor="let member of project.members">
+                            <div *ngIf="member.role === 'Teacher'" class="task-assignee">
+                                <ngx-avatar class="image-avatar" [name]="shortName(member.fullName)"
+                                    [src]="member.avatarUrl" size="30" initialsSize="2" [round]="true">
+                                </ngx-avatar>
+                                <span class="image-text">{{member.fullName}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 300px;">
+                        <div *ngFor="let member of project.members">
+                            <div *ngIf="member.role === 'Teamlead'" class="task-assignee">
+                                <ngx-avatar class="image-avatar" [name]="shortName(member.fullName)"
+                                    [src]="member.avatarUrl" size="30" initialsSize="2" [round]="true">
+                                </ngx-avatar>
+                                <span class="image-text">{{member.fullName}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{project.startDate | date}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">You have not been invited or have any projects!</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

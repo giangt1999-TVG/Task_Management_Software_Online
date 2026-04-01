@@ -1,0 +1,239 @@
+:host ::ng-deep {
+    .p-paginator {
+        .p-paginator-current {
+            margin-left: auto;
+        }
+    }
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+        background: #d8ffd1;
+        border-color: #d8ffd1;
+    }
+
+    .p-link:focus {
+        box-shadow: 0 0 0 0.2rem #7db873;
+    }
+
+    .p-button {
+        background: #3ABCA7;
+        border: 1px solid #3ABCA7;
+    }
+
+    .p-button:enabled:hover {
+        background: #33a793;
+        color: #ffffff;
+        border-color: #33a793;
+    }
+
+    .p-button-danger {
+        color: #ffffff;
+        background: #d32f2f;
+        border: 1px solid #d32f2f;
+    }
+
+    .p-button-danger:enabled:hover {
+        background: #c02929;
+        color: #ffffff;
+        border-color: #c02929;
+    }
+
+    .p-datatable.p-datatable-tasks {
+        .p-datatable-header {
+            padding: 1rem;
+            text-align: left;
+            font-size: 1.5rem;
+        }
+
+        .p-paginator {
+            padding: 1rem;
+        }
+
+        .p-datatable-thead > tr > th {
+            text-align: left;
+        }
+
+        // .p-datatable-tbody > tr > td {
+        //     cursor: auto;
+        // }
+
+        .p-dropdown-label:not(.p-placeholder) {
+            text-transform: uppercase;
+        }
+        .p-dropdown {
+            width: fit-content;
+        }
+    }
+
+    /* Responsive */
+    .p-datatable-tasks .p-datatable-tbody > tr > td .p-column-title {
+        display: none;
+    }
+}
+
+.main-container {
+    padding: 16px 16px 16px 16px;
+}
+
+.div-header {
+    height: 35px;
+}
+
+.main-content {
+    padding: 10px 10px 10px 10px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.div-left {
+    float: left;
+    width: 65%;
+}
+
+.div-right {
+    float: right;
+    width: 25%;
+}
+
+.div-info {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.div-desciption {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.column {
+    float: left;
+    width: 40%;
+}
+
+.column2 {
+    width: 20%;
+}
+
+.column3 {
+    float: right;
+    width: 40%;
+}
+
+.row:after {
+    width: 100%;
+    display: table;
+    clear: both;
+}
+
+.div-list-member {
+    max-height: 300px;
+}
+
+.div-user-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-column: 10px;
+    column-width: 20px;
+    grid-gap: 20px;
+    overflow-y: auto;
+    max-height: 900px;
+}
+
+.div-avatar {
+    margin-left: 15px;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.Icon {
+    flex: 0 0 auto;
+    height: 16px;
+    width: 16px;
+}
+
+.div-user-info {
+    align-items: center;
+    display: flex;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.div-user-info:hover {
+    background-color: #ebecf0;
+    cursor: pointer;
+}
+
+.div-name-role {
+    margin-left: 10px;
+}
+
+.div-label {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+textarea:hover:not(:focus) {
+    background-color: #f4f5f7;
+}
+
+p-calendar {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 35px;
+    color: black;
+}
+
+.div-icon-delete {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+i {
+    color: #fd0000;
+    cursor: pointer;
+}
+
+.div-project-member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.p-button-rounded {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.div-label-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.p-tag {
+    display: block !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-save-button {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

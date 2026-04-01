@@ -1,0 +1,67 @@
+<div id="task-container">
+    <div class="p-d-flex p-ai-center header">
+        <app-task-type [task]="task"></app-task-type>
+        <div class="p-d-flex p-ml-auto">
+            <div class="p-mr-3 trash-icon" pRipple (click)="deleteTask()">
+                <i class="far fa-trash-alt"></i>
+            </div>
+            <p-confirmDialog [style]="{width: '20vw'}" [baseZIndex]="10000"></p-confirmDialog>
+            <div class="exit-icon" (click)="closeModal()" pRipple>
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+    <div class="p-grid p-pb-6">
+        <div class="p-col-12 p-md-8">
+            <!-- Task title -->
+            <app-task-title [task]="task"></app-task-title>
+
+            <!-- Description -->
+            <div class="section-title">Description</div>
+            <app-task-description [task]="task"></app-task-description>
+
+            <!-- Checklists -->
+            <app-task-checklist [task]="task"></app-task-checklist>
+
+            <!-- Subtasks -->
+            <app-task-subtask [task]="task" (onClosed)="closeModal()"></app-task-subtask>
+
+            <!-- Dependencies -->
+            <app-task-dependency [task]="task" (onClosed)="closeModal()"></app-task-dependency>
+
+            <!-- Attachment files -->
+            <app-task-attachment [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-attachment>
+
+
+            <div class="section-title">Comments</div>
+            <!-- <app-task-comment [createMode]="true"></app-task-comment> -->
+
+            <app-task-comments [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-comments>
+        </div>
+        <div class="p-col-12 p-md-4 p-pt-1">
+            <!-- Section -->
+            <app-task-section [task]="task"  (emitter)="receiveDataFromChild($event)"></app-task-section>
+
+            <!-- Task Status -->
+            <app-task-status [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-status>
+
+            <!-- Task Priority -->
+            <app-task-priority [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-priority>
+
+            <!-- Task Assignee -->
+            <app-task-assignee [task]="task"></app-task-assignee>
+
+            <!-- Task Label -->
+            <app-task-label [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-label>
+
+            <!-- StartDate -->
+            <app-task-startdate [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-startdate>
+
+            <!-- DueDate -->
+            <app-task-duedate [task]="task" (emitter)="receiveDataFromChild($event)"></app-task-duedate>
+
+            <!-- Mark as completed -->
+            <!-- <app-task-mark-completed></app-task-mark-completed> -->
+        </div>
+    </div>
+</div>

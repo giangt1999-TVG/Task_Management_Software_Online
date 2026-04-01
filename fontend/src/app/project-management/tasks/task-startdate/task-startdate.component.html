@@ -1,0 +1,5 @@
+<div class="p-mb-3">
+    <div class="p-mb-1 start-date-section">Start date</div>
+    <p-calendar [(ngModel)]="startDate" placeholder="None" [autoZIndex]="true" appendTo="body" dateFormat="dd/mm/yy" dataType="date" utc="true" [style]="{'width':'12rem'}" (onSelect)="onChange($event)"></p-calendar>
+</div>
+

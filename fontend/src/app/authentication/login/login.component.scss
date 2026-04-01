@@ -1,0 +1,42 @@
+h1 {
+    font-weight: bold;
+}
+
+.title {
+    color: #3abca7;
+    text-align: center;
+}
+
+input[type="text"],
+.input-password {
+    font-size: 14px;
+    // background-color: #fafbfc;
+    // border: 2px solid #dfe1e6;
+    border-radius: 3px;
+}
+
+.login-button {
+    background-color: #3abca7;
+    height: 35px;
+    border-radius: 3px;
+    border: none;
+    font-weight: bold;
+}
+
+.forgot-password {
+    text-align: center;
+    color: #5e6c84;
+}
+
+.external-login-button {
+    height: 40px;
+    color: #505f79;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.external-login-button > .p-button-label {
+    display: none;
+}
+

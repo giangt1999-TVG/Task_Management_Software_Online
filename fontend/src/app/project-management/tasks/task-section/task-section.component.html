@@ -1,0 +1,4 @@
+<div class="p-mb-3">
+    <div class="p-mb-1 status-section">Section</div>
+    <p-dropdown [options]="sections" [(ngModel)]="currentSection" (ngModelChange)="onChangeSection($event)" optionLabel="name" [style]="{'width':'12rem'}" [placeholder]="task.section.name" [autoDisplayFirst]="false"></p-dropdown>
+</div>

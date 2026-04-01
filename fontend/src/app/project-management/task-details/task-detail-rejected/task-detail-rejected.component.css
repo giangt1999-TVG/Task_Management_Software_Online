@@ -1,0 +1,155 @@
+.main-container-dialog{
+    width: 850px;
+    height: auto;
+}
+
+.main-content{
+    padding: 10px 10px 10px 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow-x: hidden;
+}
+
+.task-detail-title{
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.div-task-function{
+  display: flex;
+  justify-content: space-around;
+  justify-items: baseline;
+}
+
+.button-title{
+  height: 50%;
+}
+
+.p-r-20{
+  padding-right: 20px;
+}
+
+.pc{
+  cursor: pointer;
+}
+
+.column{
+  float: left;
+  width: 50%;
+  padding: 20px;
+  height: auto;
+}
+
+.row::after{
+  content: "";
+  display: table;
+  clear: both;
+  margin-top: 10px;
+}
+
+.display-field-left{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.display-field-right{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.div-checkbox{
+  margin-top: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.div-description-text{
+  margin-top: 20px;
+  display: table-row;
+  justify-content: space-between;
+}
+
+.div-checklists{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.div-subtasks{
+  margin-bottom: 20px;
+}
+
+.div-dependencies{
+  margin-bottom: 20px;
+}
+
+.div-ckecklist-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div-checklist-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+}
+
+.span-delete-checklist{
+  cursor: pointer;
+}
+
+.div-subtask-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.span-delete-subtask{
+  cursor: pointer;
+}
+
+.div-subtask-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+}
+
+.div-dependencies-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.span-delete-dependency{
+  cursor: pointer;
+}
+
+.div-dependencies-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+}
+
+.div-attchment-text{
+  display: table-row;
+  justify-content: space-between;
+}
+
+.div-comment-text{
+  margin-top: 20px;
+  display: table-row;
+  justify-content: space-between;
+}
+
+.p-button-rounded{
+  width: 30px !important;
+  height: 30px !important;
+}

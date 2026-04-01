@@ -1,0 +1,7 @@
+<app-header></app-header>
+<div class="p-d-flex" style="height: 100%;">
+    <app-navigation [expanded]="expanded" (manualToggle)="manualToggle()"></app-navigation>
+    <div id="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

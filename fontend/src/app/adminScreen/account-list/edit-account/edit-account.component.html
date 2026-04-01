@@ -1,0 +1,82 @@
+<div class="main-container-dialog">
+    <div mat-dialog-title class="edit-accounts-title">
+        <h1 class="header-title">Edit Account</h1>
+        <div class="div-task-function">
+            <span [mat-dialog-close]="true">
+                <i class="pi pi-times"></i>
+            </span>
+        </div>
+    </div>
+    <div mat-dialog-content class="main-content">
+        <form [formGroup]="editForm" (ngSubmit)="updateAccount(accounts.id)">
+            <div class="p-grid">
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title">Roll Number</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" [readonly]="accounts.role != 'Student'" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.rollNumber.errors }" type="text"
+                                aria-describedby="rollNumber-help" formControlName="rollNumber" value="{{accounts.rollNumber}}" pInputText>
+                        </div>
+                        <div class="p-col-12">
+                            <!-- <small *ngIf="f.rollNumber.invalid" id="username-help" class="p-error">Roll Number is invalid.</small> -->
+                            <small *ngIf="submitted && f.rollNumber.errors && f.rollNumber.hasError('maxlength')" id="rollNumber-help" class="p-error">Roll Number maxium length is
+                                {{f.rollNumber.errors.maxlength.requiredLength}}</small>
+                            <small *ngIf="submitted && f.rollNumber.errors && f.rollNumber.hasError('pattern')" id="rollNumber-help" class="p-error">Roll Number is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title required">Username</label></div>
+                        <div class="p-col-6 ">
+                            <input name="userName" style="width: 240px;" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.userName.errors }" type="text" pInputText
+                                aria-describedby="username-help" formControlName="userName" value="{{accounts.userName}}">
+                        </div>
+                        <div class="p-col-12">
+                            <!-- <small *ngIf="submitted && required" id="username-help" class="p-error">Username is required</small> -->
+                            <small *ngIf="submitted && f.userName.errors && f.userName.hasError('maxlength')" id="username-help" class="p-error">Username maxium length is
+                                        {{f.userName.errors.maxlength.requiredLength}}</small>
+                            <small *ngIf="submitted && f.userName.errors && f.userName.hasError('pattern')" id="username-help" class="p-error">Username is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title required">Full Name</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.fullName.errors }" type="text"
+                                aria-describedby="fullname-help" formControlName="fullName" value="{{accounts.fullName}}" pInputText>
+                        </div>
+                        <div class="p-col-12">
+                            <!-- <small *ngIf="submitted && required" id="fullname-help" class="p-error">Full Name is required</small> -->
+                            <small *ngIf="submitted && f.fullName.errors && f.fullName.hasError('maxlength')" id="fullname-help" class="p-error">Full Name maxium length is
+                                        {{f.fullName.errors.maxlength.requiredLength}}</small>
+                            <small *ngIf="submitted && f.fullName.errors && f.fullName.hasError('pattern')" id="fullname-help" class="p-error">Full Name is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title">Role</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" type="text" disabled pInputText value="{{accounts.role}}">
+                            <!-- <p-dropdown [options]="roles" [disabled]="true" [placeholder]="accounts.role"
+                            optionLabel="name" [autoDisplayFirst]="false"></p-dropdown> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-12">
+                    <div class="p-field p-fluid p-grid" style="margin-bottom: 0px;">
+                        <div class="p-col-4"><label class="label-name text-title">Email</label></div>
+                        <div class="p-col-6">
+                            <input style="width: 240px;" type="text" disabled pInputText value="{{accounts.email}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="div-button-update">
+                    <button pButton pRipple type="button" class="p-button-rounded" [disabled]="!editForm.dirty" (click)="updateAccount(accounts.id)" label="Save Change"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+@import "~bootstrap/dist/css/bootstrap.css"; 
+
+* { 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+body, html {
+    background-color: #f9fafc;
+    height: 100%;
+}
+
+.btn-all {
+    color: #3ABCA7 !important;
+}
+
+.btn-border:last-of-type {
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+.btn-border:first-of-type {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.header-title{
+    font-weight: bolder !important;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #003B2D;
+}
+
+.text-title{
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #008673;
+}
+
+/* input[type="text"] {
+    min-width: 250px;
+} */
+
+.required:after {
+    content:" *";
+    color: red;
+  }
+
+.text-normal{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+    height: 10px;
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #3ABCA7; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #008673;
+  }
+
+/* CSS For Circle button */
+.btn-circle.btn-lg {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 25px;
+}  
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* CSS For User Menu */
+/* .p-overlaypanel {
+    left: unset !important;
+    right: 24px !important;
+} */
+
+.p-overlaypanel-content {
+    padding: 5px 0 !important;
+}
+
+.p-overlaypanel:after, .p-overlaypanel:before{
+    left: unset !important;
+    right: 1.25rem !important;
+    /* content: unset !important; */
+}
+
+.p-button-icon{
+    font-size: 14px !important;
+}
+
+/* .p-button{
+    background-color: #3abca7;
+    border-color: #3abca7;
+}
+
+.bg-green{
+    background-color: #3abca7;
+}
+
+.c-green{
+    color: #3abca7;
+}
+
+.p-inputtext:enabled:focus{
+    border-color: #3abca7;
+}
+
+.p-inputtext:enabled:hover{
+    border-color: #3abca7;
+}
+
+.p-overlaypanel .p-overlaypanel-close{
+    background-color: #3abca7;
+    border-color: #3abca7;
+}
+
+.p-overlaypanel .p-overlaypanel-close:enabled:hover{
+    background-color: #27ddbf;
+}
+
+.p-button:enabled:hover {
+    background: #27ddbf;
+    color: #ffffff;
+    border-color: #27ddbf;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+    border-color: #3abca7;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+    border-color: #3abca7;
+}
+
+.p-dropdown:focus{
+    border-color: #3abca7;
+} */

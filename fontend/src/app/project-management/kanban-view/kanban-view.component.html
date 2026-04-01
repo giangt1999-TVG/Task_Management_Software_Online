@@ -1,0 +1,126 @@
+<p-confirmDialog [style]="{width: '20vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<div class="root">
+
+    <div class="board">
+        <form [formGroup]="kanbanForm">
+            <div class="board-wrapper" cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="lists"
+                (cdkDropListDropped)="dropList($event)">
+
+                <div class="board-columns" cdkDropListGroup>
+                    <div class="board-column" *ngFor="let list of lists; let i = index" cdkDrag>
+
+                        <div class="column-title">
+                            <div formArrayName="listSection" style="width: -webkit-fill-available;">
+                                <textarea class="list-name text-title" pInputTextarea [rows]="1" [autoResize]="true"
+                                    aria-describedby="task-name-help"
+                                    [ngClass]="{ 'ng-invalid ng-dirty': (submittedTitle && getValidateRequierd(i)) || (submittedTitle && getValidateMaxLength(i)) }"
+                                    [formControlName]="i" (blur)="updateListName(list.listId, i)"></textarea>
+                                <small *ngIf="submittedTitle && getValidateMaxLength(i)" id="section-title-help"
+                                    class="p-error">Section name maxium length is 250</small>
+                                <small *ngIf="submittedTitle && getValidateRequierd(i)" id="section-title-help"
+                                    class="p-error">Section name is required</small>
+                            </div>
+                            <div *ngIf="userRole != 'Member'">
+                                <button pButton pRipple type="button" icon="pi pi-trash"
+                                    class="p-button-danger p-button-text"
+                                    (click)="deleteList(list.listId, list.name, i)"></button>
+                            </div>
+                        </div>
+
+                        <div class="list" cdkDropList [cdkDropListData]="list.listTasks"
+                            (cdkDropListDropped)="dropTask($event, list.listId)">
+
+                            <div class="task" *ngFor="let task of list.listTasks" cdkDrag
+                                (click)="openTaskModelDialog(task.taskId)">
+                                <div class="task-label" *ngFor="let label of task.listLabel">
+                                    <p-tag [style]="{'background-color': '#'+label.color}"></p-tag>
+                                </div>
+                                <div class="task-title">
+                                    <div class="task-name">
+                                        <span>{{task.name}}</span>
+                                    </div>
+                                    <div class="task-type">
+                                        <i *ngIf="task.category == 'Task'" class="fas fa-check-square task-icon"></i>
+                                        <i *ngIf="task.category == 'Subtask'"
+                                            class="fas fa-share-alt-square task-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="task-content">
+                                    <div class="task-duedate">
+                                        <span *ngIf="task.dueDate === null">
+                                        </span>
+                                        <span *ngIf="task.dueDate !== null">
+                                            <i class="pi pi-calendar"
+                                                style="padding-right: 5px;"></i>{{task.dueDate|date}}
+                                        </span>
+                                    </div>
+                                    <div class="task-assignee">
+                                        <span *ngIf="task.assignee === null">
+                                        </span>
+                                        <span *ngIf="task.assignee !== null">
+                                            <ngx-avatar [src]="task.assignee.avatarUrl" size="20" initialsSize="2"
+                                                [name]="shortName(task.assignee.fullName)" [round]="true">
+                                            </ngx-avatar>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="column-add-task">
+                                <div *ngIf="(listIndexForTask == null || listIndexForTask != i)">
+                                    <button pButton pRipple type="button" icon="pi pi-plus"
+                                        (click)="setAddNewTask(i, true)" label="Add New Task"
+                                        class="p-button-text btn-all"></button>
+                                </div>
+                                <div *ngIf="isAddingTask && listIndexForTask == i">
+                                    <textarea pInputTextarea placeholder="Add New Task" [rows]="1" [autoResize]="true"
+                                        formControlName="taskName" aria-describedby="task-name-help"
+                                        [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.taskName.errors }"
+                                        style="height: 36px; width: -webkit-fill-available; overflow: hidden;"></textarea>
+                                    <small *ngIf="submitted && f.taskName.errors && f.taskName.hasError('required')"
+                                        id="task-name-help" class="p-error">Task name is required</small>
+                                    <small *ngIf="submitted && f.taskName.errors && f.taskName.hasError('maxlength')"
+                                        id="task-name-help" class="p-error">Task name maxium length is
+                                        {{f.taskName.errors.maxlength.requiredLength}}</small>
+                                    <div class="flex pt-2 pb-4 items-center">
+                                        <button pButton pRipple type="button" label="Add"
+                                            (click)="createNewTask(list.listId)"
+                                            class="p-mr-2 p-button-sm save-button"></button>
+                                        <button pButton pRipple type="button" label="Cancel"
+                                            (click)="cancelAddNewTask()"
+                                            class="p-button-text p-button-sm cancel-button p-button-danger"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div *ngIf="userRole != 'Member'" class="board-column">
+                        <div *ngIf="!isAddingSection">
+                            <button pButton pRipple type="button" icon="pi pi-plus" (click)="setAddNewSection(true)"
+                                label="Add New Section" class="p-button-text btn-all"></button>
+                        </div>
+                        <div *ngIf="isAddingSection">
+                            <textarea style="width: 100%;" pInputTextarea placeholder="Add New Section" [rows]="1"
+                                [autoResize]="true" formControlName="sectionName" aria-describedby="section-name-help"
+                                [ngClass]="{ 'ng-invalid ng-dirty': submitted && f.sectionName.errors }"></textarea>
+                            <small *ngIf="submitted && f.sectionName.errors && f.sectionName.hasError('required')"
+                                id="section-name-help" class="p-error">Section name is required</small>
+                            <small *ngIf="submitted && f.sectionName.errors && f.sectionName.hasError('maxlength')"
+                                id="section-name-help" class="p-error">Section name maxium length is
+                                {{f.sectionName.errors.maxlength.requiredLength}}</small>
+                            <div class="flex pt-2 pb-4 items-center">
+                                <button pButton pRipple type="button" label="Add" (click)="createSection()"
+                                    class="p-mr-2 p-button-sm save-button"></button>
+                                <button pButton pRipple type="button" label="Cancel" (click)="cancelAddNewSection()"
+                                    class="p-button-text p-button-sm cancel-button p-button-danger"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

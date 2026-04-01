@@ -1,0 +1,66 @@
+.description-content {
+    padding-left: 8px;
+}
+
+.content-editor .ql-toolbar {
+    border-radius: 4px 4px 0px 0px !important;
+    border: 1px solid #dfe1e6 !important;
+    border-bottom: none !important;
+}
+
+.content-editor .ql-container.ql-snow {
+    height: auto !important;
+    color: #172b4d;
+    font-size: 15px;
+    border-radius: 0px 0px 4px 4px;
+    border: 1px solid #dfe1e6;
+    border-top: none;
+}
+
+.content-readonly {
+    position: relative;
+    min-height: 50px;
+    cursor: pointer;
+    margin-left: 8px;
+    margin-bottom: 23px;
+}
+.content-readonly .icon-edit {
+    display: none;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+.content-readonly:hover {
+    box-shadow: none;
+    border: none;
+    background-color: #f4f5f7;
+}
+.content-readonly:hover .icon-edit {
+    display: block;
+}
+.content-readonly .ql-editor {
+    padding: 0 !important;
+    font-size: 15px;
+}
+.ql-editor {
+    height: auto !important;
+}
+.ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6 {
+    margin-bottom: 10px;
+}
+.ql-editor img, .ql-editor video {
+    display: inline-block;
+}
+
+.cancel-button {
+    color: black;
+}
+
+.cancel-button:hover {
+    background-color: #f4f5f7 !important;
+    color: black !important;
+}
+
+.save-button {
+    border: none !important;
+}

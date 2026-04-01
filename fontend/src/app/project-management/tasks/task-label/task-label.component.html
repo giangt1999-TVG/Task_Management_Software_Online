@@ -1,0 +1,11 @@
+<div class="p-mb-3">
+    <div class="p-mb-1 label-section">Label</div>
+    <div *ngIf="!labelCurrent else elseblock" style="margin-bottom: 10px;">None</div>
+    <div style="margin-bottom: 10px;">
+        <ng-template #elseblock>
+            <p-tag *ngIf="labelCurrent" [value]="labelCurrent.name" [style]="{'background-color': '#' + labelCurrent.color}"></p-tag>
+        </ng-template>
+    </div>
+    <p-dropdown [options]="labels" [(ngModel)]="selectedLabel"  (ngModelChange)="onChangeLabel($event)" optionLabel="name" [style]="{'width':'12rem'}" [placeholder]="(task.labels.length === 0) ? 'Select a Label': labelCurrent.name"></p-dropdown>
+</div>
+

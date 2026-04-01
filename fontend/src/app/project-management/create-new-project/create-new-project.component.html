@@ -1,0 +1,126 @@
+<div class="main-container">
+    <h1 class="header-title">Create New Project</h1>
+    <hr>
+    <div class="main-content">
+        <!-- <p class="title-content text-title">New Project Information</p> -->
+        <form [formGroup]="projectInformationForm" (ngSubmit)="createNewProject()">
+            <div class="div-project-info">
+                <div class="display-field">
+                    <p class="text-title">Project Code</p>
+                    <div>
+                        <input type="text" pInputText placeholder="Project Code" formControlName="projectCode"
+                            aria-describedby="project-code-help"
+                            [ngClass]="{ 'ng-invalid ng-dirty': f.projectCode.errors && submitted}">
+                        <div class="p-col-12">
+                            <small *ngIf="submitted && f.projectCode.errors" id="project-code-help"
+                                class="p-error">Project code is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="display-field">
+                    <p class="text-title">Project Name</p>
+                    <div>
+                        <input type="text" pInputText placeholder="Project Name" formControlName="projectName"
+                            aria-describedby="project-name-help"
+                            [ngClass]="{ 'ng-invalid ng-dirty': f.projectName.errors && submitted}">
+                        <div class="p-col-12">
+                            <small *ngIf="submitted && f.projectCode.errors" id="project-code-help"
+                                class="p-error">Project name is invalid.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-date-picker">
+                    <div class="row">
+                        <div class="column">
+                            <p class="text-title">Start Date</p>
+                            <span>
+                                <p-calendar dataType="date" dateFormat="yy/mm/dd" placeholder="yyyy/mm/dd"
+                                    [style]="{'width':'100%'}" formControlName="durationFrom" [showIcon]="true"
+                                    aria-describedby="start-date-help" appendTo="body"
+                                    [ngClass]="{ 'ng-invalid ng-dirty': f.durationFrom.errors && submitted}">
+                                </p-calendar>
+                                <div class="p-col-12">
+                                    <small *ngIf="submitted && f.durationFrom.errors" id="start-date-help"
+                                        class="p-error">Start date must be required.</small>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="column">
+                            <p class="text-title">End Date</p>
+                            <span>
+                                <p-calendar dataType="date" dateFormat="yy/mm/dd" placeholder="yyyy/mm/dd"
+                                    [style]="{'width':'100%'}" formControlName="durationTo" [showIcon]="true"
+                                    aria-describedby="end-date-help" appendTo="body"
+                                    [ngClass]="{ 'ng-invalid ng-dirty': f.durationTo.errors && submitted}">
+                                </p-calendar>
+                                <div class="p-col-12">
+                                    <small *ngIf="submitted && f.durationTo.errors" id="end-date-help"
+                                        class="p-error">End date must be required.</small>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-project-member">
+                    <div class="row">
+                        <div class="column2">
+                            <p class="text-title">Teacher</p>
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <p-multiSelect [options]="teachers" formControlName="teacherSelected"
+                                    defaultLabel="Select a Teacher" optionLabel="fullName" display="chip"
+                                    [style]="{'width':'250px'}" [selectionLimit]="1" dataKey="id"
+                                    aria-describedby="project-lecturer-help"
+                                    [ngClass]="{ 'ng-invalid ng-dirty': f.teacherSelected.errors && submitted}">
+                                </p-multiSelect>
+                                <div class="p-col-12">
+                                    <small *ngIf="submitted && f.teacherSelected.errors" id="project-lecturer-help"
+                                        class="p-error">Lecturer must be choose.</small>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="column2">
+                            <p class="text-title">Team Lead</p>
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <p-multiSelect [options]="students" formControlName="teamleadSelected"
+                                    defaultLabel="Select a Teamlead" optionLabel="fullName" display="chip"
+                                    [style]="{'width':'250px'}" [selectionLimit]="1" dataKey="id"
+                                    aria-describedby="project-teamlead-help"
+                                    [ngClass]="{ 'ng-invalid ng-dirty': f.teamleadSelected.errors && submitted}">
+                                </p-multiSelect>
+                                <div class="p-col-12">
+                                    <small *ngIf="submitted && f.teamleadSelected.errors" id="project-teamlead-help"
+                                        class="p-error">Lecturer must be choose.</small>
+                                </div>
+                            </span>
+                        </div>
+                        <div class="column2">
+                            <p class="text-title">Team Member</p>
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <p-multiSelect [options]="students" formControlName="studentSelected"
+                                    [style]="{'width':'250px'}" defaultLabel="Select Students" optionLabel="fullName"
+                                    display="chip">
+                                </p-multiSelect>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-input-desciption">
+                    <div class="display-input-desciption">
+                        <p class="text-title">Description</p>
+                        <span>
+                            <textarea inputId="textarea" rows="5" style="resize: none;" cols="110"
+                                placeholder="Type something..." pInputTextarea formControlName="description"></textarea>
+                        </span>
+                    </div>
+                </div>
+                <div class="div-button-create">
+                    <button pButton pRipple type="button" label="Create New Project"
+                        (click)="createNewProject()"></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

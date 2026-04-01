@@ -1,0 +1,137 @@
+:host ::ng-deep {
+    .p-button {
+        background: #3abca7;
+        border: 1px solid #3abca7;
+    }
+
+    .p-button:enabled:hover {
+        background: #33a793;
+        color: #ffffff;
+        border-color: #33a793;
+    }
+    // .p-button:last-of-type {
+    //     border-top-left-radius: 10px !important;
+    //     border-bottom-left-radius: 10px !important;
+    // }
+    // .p-button:first-of-type {
+    //     border-top-right-radius: 10px !important;
+    //     border-bottom-right-radius: 10px !important;
+    // }
+}
+
+.main-container-dialog {
+    /* width: 700px; */
+    min-height: 800px;
+}
+
+.mat-dialog-content {
+    max-height: 900px !important;
+}
+
+.task-detail-title {
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 30px;
+}
+
+.div-task-function {
+    display: flex;
+    justify-content: space-between;
+    justify-items: baseline;
+}
+
+.main-content {
+    padding: 10px 10px 10px 10px;
+    /* max-width: 50%; */
+    margin: auto;
+    overflow-x: hidden;
+}
+
+.display-field {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+textarea:hover:not(:focus) {
+    background-color: #f4f5f7;
+}
+
+p-multiSelect {
+    width: 500px;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+p-calendar {
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    font-size: 16px;
+    line-height: 35px;
+    color: black;
+}
+
+.title-content {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+@media screen and (max-width: 1920px) {
+    .column2 {
+        float: left;
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1380px) {
+    .column2 {
+        float: left;
+        width: 50%;
+        margin-top: 10px;
+    }
+}
+
+.row::after {
+    display: table;
+    clear: both;
+    flex-wrap: wrap;
+}
+
+.div-date-picker {
+    margin-bottom: 10px;
+}
+
+.div-project-member {
+    margin-bottom: 10px;
+}
+
+.div-button-create {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}

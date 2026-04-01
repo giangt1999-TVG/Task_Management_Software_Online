@@ -1,0 +1,21 @@
+<ng-container *ngIf="isEditing; else readonlyModeTmpl">
+    <div class="description-content">
+        <p-editor [style]="{'height':'320px'}"
+              [placeholder]="''"
+              [formControl]="descriptionControl">
+        </p-editor>
+        <div class="p-d-flex p-pt-3 p-ai-center">
+            <button pButton pRipple type="button" label="Save" (click)="save()" class="p-mr-2 p-button-sm save-button" [loading]="isWorking"></button>
+            <button pButton pRipple type="button" label="Cancel" (click)="cancel()" class="p-button-text p-button-sm cancel-button"></button>
+        </div>
+    </div>  
+</ng-container>
+
+<ng-template #readonlyModeTmpl>
+    <div class="ql-snow content-readonly"
+         *ngIf="!isEditing"
+         (click)="setEditMode(true)">
+        <div class="ql-editor"
+             [innerHTML]="textHTML || 'Click here to add description'"></div>
+    </div>
+</ng-template>

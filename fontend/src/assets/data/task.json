@@ -1,0 +1,95 @@
+{
+    "data": [
+        {
+            "taskId": "1000",
+            "name": "Create mock screen kanban view",
+            "description": "Task Description",
+            "duedate": "24/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        },
+        {
+            "taskId": "1002",
+            "name": "Create mock screen task detail view",
+            "description": "Task Description",
+            "duedate": "25/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        },
+        {
+            "taskId": "1000",
+            "name": "Create mock screen Home view",
+            "description": "Task Description",
+            "duedate": "23/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        },
+        {
+            "taskId": "1000",
+            "name": "Create mock screen kanban view",
+            "description": "Task Description",
+            "duedate": "24/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        },
+        {
+            "taskId": "1000",
+            "name": "Create mock screen List view",
+            "description": "Task Description",
+            "duedate": "25/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        },
+        {
+            "taskId": "1000",
+            "name": "Create mock screen HomePage view",
+            "description": "Task Description",
+            "duedate": "24/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        },
+        {
+            "taskId": "1000",
+            "name": "Create header and slider bar view",
+            "description": "Task Description",
+            "duedate": "24/06/2021",
+            "isCompleted": 0,
+            "listID": "0100",
+            "userId": "0010",
+            "parentID": "0001",
+            "createDate": "20/06/2021",
+            "modifiedDate": "20/06/2021",
+            "isDeleted": 0
+        }
+    ]
+}
